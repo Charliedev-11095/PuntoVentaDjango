@@ -40,4 +40,6 @@ def registro_view(request):
 
 
 def dashboard_view(request):
-    return render(request, 'ventas/dashboard.html', {})
+    return render(request, 'dashboard.html', {})
+
+
