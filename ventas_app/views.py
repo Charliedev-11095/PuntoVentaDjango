@@ -45,4 +45,7 @@ def dashboard_view(request):
 def editperfildashboard_view(request):
     return render(request, 'account-profile_base.html', {})
 
+def pago_view(request):
+    return render(request, 'account-billing.html', {})
+
 
