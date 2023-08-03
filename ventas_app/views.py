@@ -48,4 +48,7 @@ def editperfildashboard_view(request):
 def pago_view(request):
     return render(request, 'account-billing.html', {})
 
+def seguridad_view(request):
+    return render(request, 'account-security.html', {})
+
 
