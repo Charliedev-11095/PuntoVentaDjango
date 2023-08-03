@@ -181,7 +181,9 @@
                                     <div>No has iniciado sesión.</div>
                                 {% endif %}
                                 </div>
-                                <div class="dropdown-user-details-email"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a2d4ced7ccc3e2c3cdce8cc1cdcf">[email&#160;protected]</a></div>
+                                <div class="dropdown-user-details-email">
+                                    Correo: {{ user.email }}
+                                </div>
                             </div>
                         </h6>
                         <div class="dropdown-divider"></div>
@@ -499,14 +501,16 @@
                     <!-- Sidenav Footer-->
                     <div class="sidenav-footer">
                         <div class="sidenav-footer-content">
-                            <div class="sidenav-footer-subtitle">Logged in as:</div>
+                            <div class="sidenav-footer-subtitle">Logueado como:</div>
                             <div class="sidenav-footer-title">
                                 {% if user.is_authenticated %}
                                 <div>Bienvenido(a), {{ user.username }}!</div>
+                                {{user.email}}
                             {% else %}
                                 <div>No has iniciado sesión.</div>
                             {% endif %}
                             </div>
+                            
                         </div>
                     </div>
                 </nav>
