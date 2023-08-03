@@ -43,6 +43,6 @@ def dashboard_view(request):
     return render(request, 'dashboard.html', {})
 
 def editperfildashboard_view(request):
-    return render(request, 'account-profile.html', {})
+    return render(request, 'account-profile_base.html', {})
 
 
