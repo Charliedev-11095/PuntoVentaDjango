@@ -37,7 +37,7 @@
                 <!-- Documentation Dropdown-->
                 <li class="nav-item dropdown no-caret d-none d-md-block me-3">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownDocs" href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <div class="fw-500">Documentation</div>
+                        <div class="fw-500">Documentación</div>
                         <i class="fas fa-chevron-right dropdown-arrow"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end py-0 me-sm-n15 me-lg-0 o-hidden animated--fade-in-up" aria-labelledby="navbarDropdownDocs">
@@ -187,7 +187,7 @@
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{%url 'editperfildashboard'%}">
                             <div class="dropdown-item-icon"><i data-feather="settings"></i></div>
-                            Account
+                            Configurar Perfil
                         </a>
                         <a class="dropdown-item" href="{% url 'logout' %}">
                             <div class="dropdown-item-icon"><i data-feather="log-out"></i></div>
@@ -230,7 +230,7 @@
                             <div class="collapse" id="collapseDashboards" data-bs-parent="#accordionSidenav">
                                 <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
                                     <a class="nav-link" href="{%url 'dashboard'%}">
-                                        Default
+                                        Inicio
                                         <span class="badge bg-primary-soft text-primary ms-auto">Updated</span>
                                     </a>
                                     <!-- <a class="nav-link" href="dashboard-2.html">Multipurpose</a>
@@ -242,19 +242,19 @@
                             <!-- Sidenav Accordion (Pages)-->
                             <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                                 <div class="nav-link-icon"><i data-feather="grid"></i></div>
-                                Pages
+                                Páginas
                                 <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="collapsePages" data-bs-parent="#accordionSidenav">
                                 <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPagesMenu">
                                     <!-- Nested Sidenav Accordion (Pages -> Account)-->
                                     <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAccount" aria-expanded="false" aria-controls="pagesCollapseAccount">
-                                        Account
+                                        Cuenta
                                         <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                     </a>
                                     <div class="collapse" id="pagesCollapseAccount" data-bs-parent="#accordionSidenavPagesMenu">
                                         <nav class="sidenav-menu-nested nav">
-                                            <a class="nav-link" href="account-profile.html">Profile</a>
+                                            <a class="nav-link" href="{%url 'editperfildashboard'%}">Perfil</a>
                                             <a class="nav-link" href="account-billing.html">Billing</a>
                                             <a class="nav-link" href="account-security.html">Security</a>
                                             <a class="nav-link" href="account-notifications.html">Notifications</a>
@@ -821,7 +821,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" crossorigin="anonymous"></script>
         <script src="{% static 'assets/demo/chart-area-demo.js'%}"></script>
         <script src="{% static 'assets/demo/chart-bar-demo.js'%}"></script>
-        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+        <script src="{% static 'js/simple-datatables@7.1.2_dist_umd_simple-datatables.min.js' %}"></script>
         <script src="{% static 'js/datatables/datatables-simple-demo.js'%}"></script>
         <script src="https://cdn.jsdelivr.net/npm/litepicker/dist/bundle.js" crossorigin="anonymous"></script>
         <script src="{% static 'js/litepicker.js'%}"></script>
