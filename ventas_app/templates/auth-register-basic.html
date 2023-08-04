@@ -25,46 +25,67 @@
                                     <div class="card-header justify-content-center"><h3 class="fw-light my-4">Crear Cuenta</h3></div>
                                     <div class="card-body">
                                         <!-- Registration form-->
-                                        <form method="post" class="form-signin">
-                                            {% csrf_token %}
-                                            
-                                            <div class="form-group">
-                                                <label for="id_username" class="small mb-1">Usuario</label>
-                                                {{ form.username }}
-                                            </div>
-                                        
-                                            <div class="form-group">
-                                                <label for="id_password1" class="small mb-1">Contraseña</label>
-                                                {{ form.password1 }}
-                                            </div>
-                                        
-                                            <div class="form-group">
-                                                <label for="id_password2" class="small mb-1">Confirmar Contraseña</label>
-                                                {{ form.password2 }}
-                                            </div>
-                                        
-                                            <div class="form-group">
-                                                <label for="id_first_name" class="small mb-1">Nombre(s)</label>
-                                                {{ form.first_name }}
-                                            </div>
-                                        
-                                            <div class="form-group">
-                                                <label for="id_last_name" class="small mb-1">Apellido(s)</label>
-                                                {{ form.last_name }}
-                                            </div>
-                                        
-                                            <div class="form-check">
-                                                {{ form.es_administrador }}
-                                                <label class="form-check-label" for="id_es_administrador">Es Administrador</label>
-                                            </div>
-                                        
-                                            <div class="form-check">
-                                                {{ form.es_vendedor }}
-                                                <label class="form-check-label" for="id_es_vendedor">Es Vendedor</label>
-                                            </div>
-                                        
-                                            <button type="submit" class="btn btn-primary btn-block col-md-12 mt-4">Crear Cuenta</button>
-                                        </form>
+                                        <!-- auth-register-basic.html -->
+
+<form method="post" class="form-signin">
+    {% csrf_token %}
+    
+    {% if form.errors %}
+        <div class="alert alert-danger">
+            <strong>Por favor, corrija los siguientes errores:</strong>
+            <ul>
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <li>{{ field.label }}: {{ error }}</li>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    
+    <div class="form-group">
+        <label for="id_username" class="small mb-1">Usuario</label>
+        {{ form.username }}
+    </div>
+
+    <div class="form-group">
+        <label for="id_email" class="small mb-1">Correo electrónico</label>
+        {{ form.email }}
+    </div>
+
+    <div class="form-group">
+        <label for="id_password1" class="small mb-1">Contraseña</label>
+        {{ form.password1 }}
+    </div>
+
+    <div class="form-group">
+        <label for="id_password2" class="small mb-1">Confirmar Contraseña</label>
+        {{ form.password2 }}
+    </div>
+
+    <div class="form-group">
+        <label for="id_first_name" class="small mb-1">Nombre(s)</label>
+        {{ form.first_name }}
+    </div>
+
+    <div class="form-group">
+        <label for="id_last_name" class="small mb-1">Apellido(s)</label>
+        {{ form.last_name }}
+    </div>
+
+    <div class="form-check">
+        {{ form.es_administrador }}
+        <label class="form-check-label" for="id_es_administrador">Es Administrador</label>
+    </div>
+
+    <div class="form-check">
+        {{ form.es_vendedor }}
+        <label class="form-check-label" for="id_es_vendedor">Es Vendedor</label>
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-block col-md-12 mt-4">Crear Cuenta</button>
+</form>
+
                                         
                                         
                                     </div>
