@@ -52,9 +52,10 @@
                 <table id="datatablesSimple">
                     <thead>
                         <tr>
-                            <th>Nombre</th>
-                            <th>Apellidos</th>
-                            <th>otra cosa</th>
+                            <th>Nickname</th>
+                            <th>Nombre(s)</th>
+                            <th>Apellido Paterno</th>
+                            <th>Apellido Materno</th>
                             <th>Género</th>
                             <th>Correo</th>
                             <th>Salary</th>
@@ -64,21 +65,23 @@
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>Nombre</th>
-                            <th>Apellidos</th>
+                            <th>Nickname</th>
+                            <th>Nombre(s)</th>
+                            <th>Apellido Paterno</th>
+                            <th>Apellido Materno</th>
                             <th>otra cosa</th>
                             <th>Género</th>
                             <th>Correo</th>
-                            <th>Salary</th>
                             <th>Estado</th>
                             <th>acción</th>
                         </tr>
                     </tfoot>
                     <tbody>
                         <tr>
-                            <td>{{ user.username }}</td>
+                            <td>{{user.username}}</td>
+                            <td>{{user.nombre}}</td>
                             <td>{{ user.first_name }}</td>
-                            <td>Edinburgh</td>
+                            <td>{{ user.last_name }}</td>
                             <td>M</td>
                             <td>{{user.email}}</td>
                             <td>$320,800</td>
@@ -89,11 +92,12 @@
                             </td>
                         </tr>
                         <tr>
+                            <td>Tiger Nixon</td>
                             <td>Garrett Winters</td>
                             <td>Accountant</td>
                             <td>Tokyo</td>
                             <td>M</td>
-                            <td>{{user.email}}</td>
+                            <td>correoprueba@prueba.com</td>
                             <td>$170,750</td>
                             <td><div class="badge bg-warning rounded-pill">Pending</div></td>
                             <td>
