@@ -53,9 +53,9 @@
                     <thead>
                         <tr>
                             <th>Nombre</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
+                            <th>Apellido Materno</th>
+                            <th>Apellido Paterno</th>
+                            <th>Correo</th>
                             <th>Start date</th>
                             <th>Salary</th>
                             <th>Estado</th>
@@ -65,9 +65,9 @@
                     <tfoot>
                         <tr>
                             <th>Nombre</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
+                            <th>Apellido Materno</th>
+                            <th>Apellido Paterno</th>
+                            <th>Correo</th>
                             <th>Start date</th>
                             <th>Salary</th>
                             <th>Estado</th>
@@ -76,10 +76,10 @@
                     </tfoot>
                     <tbody>
                         <tr>
-                            <td>Tiger Nixon</td>
+                            <td>{{ user.username }}</td>
                             <td>System Architect</td>
                             <td>Edinburgh</td>
-                            <td>61</td>
+                            <td>{{user.email}}</td>
                             <td>2011/04/25</td>
                             <td>$320,800</td>
                             <td><div class="badge bg-primary text-white rounded-pill">Full-time</div></td>
