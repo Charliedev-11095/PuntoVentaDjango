@@ -1,4 +1,5 @@
 # Create your models here.
+from datetime import timezone
 from django.db import models
 from django.contrib.auth.models import User
 from django.conf import settings 
@@ -6,7 +7,13 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 class Usuario(AbstractUser):
+    nombre = models.CharField(max_length=30, blank=True)
+    first_name = models.CharField(('apellido paterno'), max_length=30, blank=True)
+    last_name = models.CharField(('apellido materno'), max_length=30, blank=True)
     email = models.EmailField(unique=True)
+    date_joined = models.DateTimeField(("Fecha de Creación"))
+    is_staff = is_staff = models.BooleanField(("es staff"),default=False,help_text=("Indica si el usuario puede ingresar a este sitio de administración."),)
+    is_active = models.BooleanField(("activo"),default=True,help_text=("Designa si este usuario debe tratarse como activo" "Desactive este  campo en lugar de eliminar usuarios."),)
     es_administrador = models.BooleanField(default=False)
     es_vendedor = models.BooleanField(default=False)
 
