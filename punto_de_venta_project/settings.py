@@ -16,6 +16,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+ROOT_URL = '/'
+LOGIN_REDIRECT_URL = '/dashboard/'
+LOGIN_URL_FAILURE_VIEW = 'error404.html'
 
 # Application definition
 
