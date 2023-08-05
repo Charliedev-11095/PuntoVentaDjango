@@ -40,15 +40,23 @@ def registro_view(request):
 
 
 def dashboard_view(request):
-    return render(request, 'dashboard.html', {})
+     if not request.user.is_authenticated:
+        return redirect('error')
+     return render(request, 'dashboard.html', {})
 
 def editperfildashboard_view(request):
+    if not request.user.is_authenticated:
+        return redirect('error')
     return render(request, 'account-profile_base.html', {})
 
 def pago_view(request):
+    if not request.user.is_authenticated:
+        return redirect('error')
     return render(request, 'account-billing.html', {})
 
 def seguridad_view(request):
+    if not request.user.is_authenticated:
+        return redirect('error')
     return render(request, 'account-security.html', {})
 
 def error404_view(request):
