@@ -6,6 +6,8 @@ from django.urls import reverse
 from .forms import RegistroForm
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import logout
+from ventas_app.models import Usuario  # Asegúrate de importar tu modelo personalizado Usuario
+
 
 def login_view(request):
     error_message = ""
@@ -39,10 +41,15 @@ def registro_view(request):
     return render(request, 'auth-register-basic.html', {'form': form})
 
 
+from ventas_app.models import Usuario
+
 def dashboard_view(request):
-     if not request.user.is_authenticated:
+    if not request.user.is_authenticated:
         return redirect('error')
-     return render(request, 'dashboard.html', {})
+    # Obtener todos los usuarios
+    users = Usuario.objects.all()
+    return render(request, 'dashboard.html', {'users': users})
+
 
 def editperfildashboard_view(request):
     if not request.user.is_authenticated:
