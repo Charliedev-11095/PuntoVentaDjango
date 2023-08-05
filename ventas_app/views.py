@@ -41,8 +41,6 @@ def registro_view(request):
     return render(request, 'auth-register-basic.html', {'form': form})
 
 
-from ventas_app.models import Usuario
-
 def dashboard_view(request):
     if not request.user.is_authenticated:
         return redirect('error')
