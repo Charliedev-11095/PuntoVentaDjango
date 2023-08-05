@@ -13,5 +13,6 @@ urlpatterns = [
     path('registro/', views.registro_view, name='registro'),
     path('admin/', admin.site.urls),
     path('logout/', views.logout_view, name='logout'),
+    path('error404/',views.error404_view, name='error')
 
 ]

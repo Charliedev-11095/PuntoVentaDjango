@@ -51,4 +51,7 @@ def pago_view(request):
 def seguridad_view(request):
     return render(request, 'account-security.html', {})
 
+def error404_view(request):
+    return render(request, 'error-404.html', {})
+
 
