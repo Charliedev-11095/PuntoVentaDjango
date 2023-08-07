@@ -8,12 +8,11 @@ from django.db import models
 
 class Usuario(AbstractUser):
     nombre = models.CharField(max_length=30, blank=True)
-    first_name = models.CharField(('apellido paterno'), max_length=30, blank=True)
-    last_name = models.CharField(('apellido materno'), max_length=30, blank=True)
+    first_name = models.CharField(('Apellido Paterno'), max_length=30, blank=True)
+    last_name = models.CharField(('Apellido Materno'), max_length=30, blank=True)
     email = models.EmailField(unique=True)
-    is_staff = is_staff = models.BooleanField(("es staff"),default=False,help_text=("Indica si el usuario puede ingresar a este sitio de administración."),)
-    is_active = models.BooleanField(("activo"),default=True,help_text=("Designa si este usuario debe tratarse como activo" "Desactive este  campo en lugar de eliminar usuarios."),)
-    es_administrador = models.BooleanField(default=False)
+    is_active = models.BooleanField(("Activo"),default=True,help_text=("Designa si este usuario debe tratarse como activo" "Desactive este  campo en lugar de eliminar usuarios."),)
+    is_staff = models.BooleanField(("Es Administrador"),default=False,help_text=("Indica si el usuario puede ingresar a este sitio de administración."),)
     es_vendedor = models.BooleanField(default=False)
 
 
