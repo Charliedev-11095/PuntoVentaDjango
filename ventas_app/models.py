@@ -6,14 +6,25 @@ from django.conf import settings
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
+
 class Usuario(AbstractUser):
+    GENDER_CHOICES = [
+        ('masculino', 'Masculino'),
+        ('femenino', 'Femenino'),
+        ('otro', 'Otro'),
+    ]
+
     nombre = models.CharField(max_length=30, blank=True)
     first_name = models.CharField(('Apellido Paterno'), max_length=30, blank=True)
     last_name = models.CharField(('Apellido Materno'), max_length=30, blank=True)
+    gender = models.CharField(('Género'), max_length=9, choices=GENDER_CHOICES, blank=True)
     email = models.EmailField(unique=True)
-    is_active = models.BooleanField(("Activo"),default=True,help_text=("Designa si este usuario debe tratarse como activo" "Desactive este  campo en lugar de eliminar usuarios."),)
-    is_staff = models.BooleanField(("Es Administrador"),default=False,help_text=("Indica si el usuario puede ingresar a este sitio de administración."),)
+    is_active = models.BooleanField(("Activo"), default=True, help_text=("Designa si este usuario debe tratarse como activo. " "Desactive este campo en lugar de eliminar usuarios."),)
+    is_staff = models.BooleanField(("Es Administrador"), default=False, help_text=("Indica si el usuario puede ingresar a este sitio de administración."),)
     es_vendedor = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.username
 
 
 #Tabla Marcas

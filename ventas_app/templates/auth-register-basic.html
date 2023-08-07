@@ -64,6 +64,16 @@
     </div>
 
     <div class="form-group">
+        <label for="id_genero" class="small mb-1">Género</label>
+        <select id="id_genero" name="gender" class="form-control">
+            <option value="">Seleccionar género</option>
+            <option value="masculino">Masculino</option>
+            <option value="femenino">Femenino</option>
+            <option value="otro">Otro</option>
+        </select>
+    </div>    
+
+    <div class="form-group">
         <label for="id_email" class="small mb-1">Correo electrónico</label>
         {{ form.email }}
     </div>
