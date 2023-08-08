@@ -48,21 +48,28 @@
                     <div class="card-body">
                         <form>
                             <!-- Form Group (username)-->
-                            <div class="mb-3">
-                                <label class="small mb-1" for="inputUsername">Nombre de usario (Como aparecerá su nombre a otros usuarios en el sitio).</label>
-                                <input class="form-control" id="inputUsername" type="text" placeholder="Ingrese el nombre" value="{{user.nombre}}" required />
+                            <div class="row gx-3 mb-3">
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="id_username">Nickname</label>
+                                <input class="form-control" id="id_username" type="text" placeholder="Ingrese el nombre" value="{{user.username}}" required />
                             </div>
+
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="id_username">Nombre</label>
+                                <input class="form-control" id="id_username" type="text" placeholder="Ingrese el nombre" value="{{user.nombre}}" required />
+                            </div>
+                        </div>
                             <!-- Form Row-->
                             <div class="row gx-3 mb-3">
                                 <!-- Form Group (first name)-->
                                 <div class="col-md-6">
-                                    <label class="small mb-1" for="inputFirstName">Apellido Paterno</label>
-                                    <input class="form-control" id="inputFirstName" type="text" placeholder="Ingrese su Apellido" value="{{user.firstname}}" />
+                                    <label class="small mb-1" for="id_first_name">Apellido Paterno</label>
+                                    <input class="form-control" id="id_first_name" type="text" placeholder="Ingrese su Apellido Paterno" value="{{user.first_name}}" />
                                 </div>
                                 <!-- Form Group (last name)-->
                                 <div class="col-md-6">
                                     <label class="small mb-1" for="inputLastName">Apellido Materno</label>
-                                    <input class="form-control" id="inputLastName" type="text" placeholder="Enter your last name" value="{{user.lastname}}" />
+                                    <input class="form-control" id="inputLastName" type="text" placeholder="Enter your last name" value="{{user.last_name}}" />
                                 </div>
                             </div>
                             <!-- Form Row        -->
@@ -81,7 +88,7 @@
                             <!-- Form Group (email address)-->
                             <div class="mb-3">
                                 <label class="small mb-1" for="inputEmailAddress">Correo Electrónico</label>
-                                <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address" value="nombre@ejemplo.com" />
+                                <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address" value="{{user.email}}" />
                             </div>
                             <!-- Form Row-->
                             <div class="row gx-3 mb-3">
@@ -93,7 +100,7 @@
                                 <!-- Form Group (birthday)-->
                                 <div class="col-md-6">
                                     <label class="small mb-1" for="inputBirthday">Fecha de Nacimiento</label>
-                                    <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Enter your birthday" value="06/10/1988" />
+                                    <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Ingresa tu cumpleaños" value="{{user.birth_date}}" />
                                 </div>
                             </div>
                             <!-- Save changes button-->
