@@ -16,7 +16,8 @@ window.addEventListener('DOMContentLoaded', event => {
     if (litepickerSingleDate) {
         new Litepicker({
             element: litepickerSingleDate,
-            format: 'MMM DD, YYYY'
+            format: 'DD, MMMM, YYYY',
+            lang: 'es'  // Configuración para español
         });
     }
 
@@ -25,7 +26,8 @@ window.addEventListener('DOMContentLoaded', event => {
         new Litepicker({
             element: litepickerDateRange,
             singleMode: false,
-            format: 'MMM DD, YYYY'
+            format: 'DD, MMMM, YYYY',
+            lang: 'es'  // Configuración para español
         });
     }
 
@@ -36,7 +38,8 @@ window.addEventListener('DOMContentLoaded', event => {
             singleMode: false,
             numberOfMonths: 2,
             numberOfColumns: 2,
-            format: 'MMM DD, YYYY'
+            format: 'DD, MMMM, YYYY',
+            lang: 'es'  // Configuración para español
         });
     }
 
@@ -49,7 +52,8 @@ window.addEventListener('DOMContentLoaded', event => {
             singleMode: false,
             numberOfMonths: 2,
             numberOfColumns: 2,
-            format: 'MMM DD, YYYY',
+            format: 'DD, MMMM, YYYY',
+            lang: 'es',  // Configuración para español
             plugins: ['ranges']
         });
     }
