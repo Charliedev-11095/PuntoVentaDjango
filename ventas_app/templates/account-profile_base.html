@@ -50,19 +50,19 @@
                             <!-- Form Group (username)-->
                             <div class="mb-3">
                                 <label class="small mb-1" for="inputUsername">Nombre de usario (Como aparecerá su nombre a otros usuarios en el sitio).</label>
-                                <input class="form-control" id="inputUsername" type="text" placeholder="Ingrese el nombre" value="nombre" required />
+                                <input class="form-control" id="inputUsername" type="text" placeholder="Ingrese el nombre" value="{{user.nombre}}" required />
                             </div>
                             <!-- Form Row-->
                             <div class="row gx-3 mb-3">
                                 <!-- Form Group (first name)-->
                                 <div class="col-md-6">
                                     <label class="small mb-1" for="inputFirstName">Apellido Paterno</label>
-                                    <input class="form-control" id="inputFirstName" type="text" placeholder="Ingrese su Apellido" value="Apellido" />
+                                    <input class="form-control" id="inputFirstName" type="text" placeholder="Ingrese su Apellido" value="{{user.firstname}}" />
                                 </div>
                                 <!-- Form Group (last name)-->
                                 <div class="col-md-6">
                                     <label class="small mb-1" for="inputLastName">Apellido Materno</label>
-                                    <input class="form-control" id="inputLastName" type="text" placeholder="Enter your last name" value="Luna" />
+                                    <input class="form-control" id="inputLastName" type="text" placeholder="Enter your last name" value="{{user.lastname}}" />
                                 </div>
                             </div>
                             <!-- Form Row        -->

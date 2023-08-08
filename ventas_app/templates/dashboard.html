@@ -59,6 +59,7 @@
                     <th>Apellido Paterno</th>
                     <th>Apellido Materno</th>
                     <th>Género</th>
+                    <th>Fecha de Nacimiento</th>
                     <th>Correo</th>
                     <th>Rol</th>
                     <th>Estado</th>
@@ -73,6 +74,7 @@
                     <td>{{ user.last_name }}</td>
                     <td>{{ user.last_name }}</td>
                     <td>{{ user.gender }}</td>
+                    <td>{{ user.birth_date }}</td>
                     <td>{{ user.email }}</td>
                     <td>
                         {% if user.is_staff %}
