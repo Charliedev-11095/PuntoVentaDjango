@@ -18,6 +18,7 @@ class Usuario(AbstractUser):
     first_name = models.CharField(('Apellido Paterno'), max_length=30, blank=True)
     last_name = models.CharField(('Apellido Materno'), max_length=30, blank=True)
     gender = models.CharField(('Género'), max_length=9, choices=GENDER_CHOICES, blank=True)
+    phone = models.CharField(('Teléfono'), max_length=10, blank=True)
     email = models.EmailField(unique=True)
     birth_date = models.DateField(('Fecha de Nacimiento'), null=True, blank=True)
     is_active = models.BooleanField(("Activo"), default=True, help_text=("Designa si este usuario debe tratarse como activo. " "Desactive este campo en lugar de eliminar usuarios."),)
