@@ -33,7 +33,8 @@
                     <div class="card-header">Foto de Perfil</div>
                     <div class="card-body text-center">
                         <!-- Profile picture image-->
-                        <img class="img-account-profile rounded-circle mb-2" src="assets/img/illustrations/profiles/profile-1.png" alt="" />
+                        <img class="img-account-profile rounded-circle mb-2"
+                            src="assets/img/illustrations/profiles/profile-1.png" alt="" />
                         <!-- Profile picture help block-->
                         <div class="small font-italic text-muted mb-4">JPG o PNG no mayor a 5 MB</div>
                         <!-- Profile picture upload button-->
@@ -49,27 +50,31 @@
                         <form>
                             <!-- Form Group (username)-->
                             <div class="row gx-3 mb-3">
-                            <div class="col-md-6">
-                                <label class="small mb-1" for="id_username">Nickname</label>
-                                <input class="form-control" id="id_username" type="text" placeholder="Ingrese el nombre" value="{{user.username}}" required />
-                            </div>
+                                <div class="col-md-6">
+                                    <label class="small mb-1" for="id_username">Nickname</label>
+                                    <input class="form-control" id="id_username" type="text"
+                                        placeholder="Ingrese el nombre" value="{{user.username}}" required />
+                                </div>
 
-                            <div class="col-md-6">
-                                <label class="small mb-1" for="id_username">Nombre</label>
-                                <input class="form-control" id="id_username" type="text" placeholder="Ingrese el nombre" value="{{user.nombre}}" required />
+                                <div class="col-md-6">
+                                    <label class="small mb-1" for="id_username">Nombre</label>
+                                    <input class="form-control" id="id_username" type="text"
+                                        placeholder="Ingrese el nombre" value="{{user.nombre}}" required />
+                                </div>
                             </div>
-                        </div>
                             <!-- Form Row-->
                             <div class="row gx-3 mb-3">
                                 <!-- Form Group (first name)-->
                                 <div class="col-md-6">
                                     <label class="small mb-1" for="id_first_name">Apellido Paterno</label>
-                                    <input class="form-control" id="id_first_name" type="text" placeholder="Ingrese su Apellido Paterno" value="{{user.first_name}}" />
+                                    <input class="form-control" id="id_first_name" type="text"
+                                        placeholder="Ingrese su Apellido Paterno" value="{{user.first_name}}" />
                                 </div>
                                 <!-- Form Group (last name)-->
                                 <div class="col-md-6">
                                     <label class="small mb-1" for="inputLastName">Apellido Materno</label>
-                                    <input class="form-control" id="inputLastName" type="text" placeholder="Enter your last name" value="{{user.last_name}}" />
+                                    <input class="form-control" id="inputLastName" type="text"
+                                        placeholder="Enter your last name" value="{{user.last_name}}" />
                                 </div>
                             </div>
                             <!-- Form Row        -->
@@ -77,31 +82,43 @@
                                 <!-- Form Group (organization name)-->
                                 <div class="col-md-6">
                                     <label class="small mb-1" for="inputOrgName">Nombre de la Organización</label>
-                                    <input class="form-control" id="inputOrgName" type="text" placeholder="Enter your organization name" value="Organización" />
+                                    <input class="form-control" id="inputOrgName" type="text"
+                                        placeholder="Enter your organization name" value="Organización" />
                                 </div>
                                 <!-- Form Group (location)-->
                                 <div class="col-md-6">
                                     <label class="small mb-1" for="inputLocation">Ubicación</label>
-                                    <input class="form-control" id="inputLocation" type="text" placeholder="Enter your location" value="San Francisco, CA" />
+                                    <input class="form-control" id="inputLocation" type="text"
+                                        placeholder="Enter your location" value="San Francisco, CA" />
                                 </div>
                             </div>
                             <!-- Form Group (email address)-->
                             <div class="mb-3">
                                 <label class="small mb-1" for="inputEmailAddress">Correo Electrónico</label>
-                                <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address" value="{{user.email}}" />
+                                <input class="form-control" id="inputEmailAddress" type="email"
+                                    placeholder="Enter your email address" value="{{user.email}}" />
                             </div>
                             <!-- Form Row-->
                             <div class="row gx-3 mb-3">
                                 <!-- Form Group (phone number)-->
                                 <div class="col-md-6">
                                     <label class="small mb-1" for="inputPhone">Número Telefónico</label>
-                                    <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number" value="555-123-4567" />
+                                    <input class="form-control" id="inputPhone" type="tel"
+                                        placeholder="Enter your phone number" value="555-123-4567" />
                                 </div>
                                 <!-- Form Group (birthday)-->
                                 <div class="col-md-6">
                                     <label class="small mb-1" for="inputBirthday">Fecha de Nacimiento</label>
-                                    <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Ingresa tu cumpleaños" value="{{user.birth_date}}" />
+                                    <div class="input-group">
+                                        <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Ingresa tu cumpleaños" value="{{user.birth_date}}" />
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">
+                                                <i class="fas fa-calendar"></i>
+                                            </span>
+                                        </div>
+                                    </div>
                                 </div>
+                                
                             </div>
                             <!-- Save changes button-->
                             <button class="btn btn-primary" type="button">Guardar cambios</button>
@@ -116,18 +133,15 @@
 
 {%block footer%}
 <footer class="footer-admin mt-auto footer-light">
-            <div class="container-xl px-4">
-                <div class="row">
-                    <div class="col-md-6 small">Copyright © Your Website 2021</div>
-                    <div class="col-md-6 text-md-end small">
-                        <a href="#!">Privacy Policy</a>
-                        ·
-                        <a href="#!">Terms &amp; Conditions</a>
-                    </div>
-                </div>
+    <div class="container-xl px-4">
+        <div class="row">
+            <div class="col-md-6 small">Copyright © Your Website 2021</div>
+            <div class="col-md-6 text-md-end small">
+                <a href="#!">Privacy Policy</a>
+                ·
+                <a href="#!">Terms &amp; Conditions</a>
             </div>
+        </div>
+    </div>
 </footer>
-{%endblock%}  
-
-
-
+{%endblock%}
