@@ -1,3 +1,4 @@
+
 {% extends 'dashboard_base.html' %}
 {% load static %}
 
@@ -46,6 +47,7 @@
 {%endblock%}
 
 {% block tabla %}
+
 <div class="card mb-4">
     <div class="card-header">Gestión de personal</div>
     <div class="card-body">
@@ -70,19 +72,19 @@
                     <td>{{ user.first_name }}</td>
                     <td>{{ user.last_name }}</td>
                     <td>{{ user.last_name }}</td>
-                    <td>{{user.gender}}</td>
+                    <td>{{ user.gender }}</td>
                     <td>{{ user.email }}</td>
-                    <td>$320,800</td>
+                    <td>por definir</td>
                     <td>
                         <div class="badge bg-primary text-white rounded-pill">Full-time</div>
                     </td>
                     <td>
-                        <button class="btn btn-datatable btn-icon btn-transparent-dark me-2">
-                            <i class="fa-solid fa-ellipsis-vertical"></i>
-                        </button>
-                        <button class="btn btn-datatable btn-icon btn-transparent-dark">
-                            <i class="fa-regular fa-trash-can"></i>
-                        </button>
+                        <a href="#" class="btn btn-datatable btn-icon btn-transparent-dark">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <a href="#" class="btn btn-datatable btn-icon btn-transparent-dark">
+                            <i class="fas fa-trash-alt"></i>
+                        </a>
                     </td>
                 </tr>
                 {% endfor %}
@@ -90,4 +92,6 @@
         </table>
     </div>
 </div>
+
+
 {% endblock %}
