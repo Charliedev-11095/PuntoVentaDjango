@@ -49,7 +49,7 @@ def dashboard_view(request):
     return render(request, 'dashboard.html', {'users': users})
 
 
-def editperfildashboard_view(request):
+def configperfil_view(request):
     if not request.user.is_authenticated:
         return redirect('error')
     return render(request, 'account-profile_base.html', {})

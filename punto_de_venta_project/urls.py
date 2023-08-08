@@ -6,7 +6,7 @@ from ventas_app import views  # Asegúrate de importar las vistas de la aplicaci
 
 urlpatterns = [
     path('dashboard/', views.dashboard_view, name='dashboard'),
-    path('editperfildashboard/',views.editperfildashboard_view,name='editperfildashboard'),
+    path('configperfil/',views.configperfil_view,name='configperfil'),
     path('pago/', views.pago_view, name='pago'),
     path('seguridad/', views.seguridad_view, name='seguridad'),
     path('', views.login_view, name='login'),
