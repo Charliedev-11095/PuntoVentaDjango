@@ -1,144 +1,176 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Register</title>
-        <link href="{% static '/css/styles.css' %}" rel="stylesheet" />
-        <link rel="icon" type="image/x-icon" href="assets/img/favicon.png" />
-        <script data-search-pseudo-elements="" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/js/all.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    </head>
-    <body class="bg-primary">
-        <div id="layoutAuthentication">
-            <div id="layoutAuthentication_content">
-                <main>
-                    <div class="container-xl px-4">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-7">
-                                <!-- Basic registration form-->
-                                <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header justify-content-center"><h3 class="fw-light my-4">Crear Cuenta</h3></div>
-                                    <div class="card-body">
-                                        <!-- Registration form-->
-                                        <!-- auth-register-basic.html -->
 
-<form method="post" class="form-signin">
-    {% csrf_token %}
-    
-    {% if form.errors %}
-        <div class="alert alert-danger">
-            <strong>Por favor, corrija los siguientes errores:</strong>
-            <ul>
-                {% for field in form %}
-                    {% for error in field.errors %}
-                        <li>{{ field.label }}: {{ error }}</li>
-                    {% endfor %}
-                {% endfor %}
-            </ul>
-        </div>
-    {% endif %}
-    
-    <div class="form-group">
-        <label for="id_username" class="small mb-1">Usuario (Nickname)</label>
-        {{ form.username }}
-    </div>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Register</title>
+    <link href="{% static '/css/styles.css' %}" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.png" />
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static '/js/jquery.com_ui_1.12.1_jquery-ui.js' %}"></script>
 
-    <div class="form-group">
-        <label for="id_username" class="small mb-1">Nombre</label>
-        {{ form.nombre }}
-    </div>
+    <script data-search-pseudo-elements="" defer=""
+        src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/js/all.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js"
+        crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 
-    <div class="form-group">
-        <label for="id_first_name" class="small mb-1">Apellido Paterno</label>
-        {{ form.first_name }}
-    </div>
 
-    <div class="form-group">
-        <label for="id_birth_date" class="small mb-1">Fecha de Nacimiento</label>
-        {{ form.birth_date }}
-    </div>
-    <div class="form-group">
-        <label for="id_first_name" class="small mb-1">Apellido Materno</label>
-        {{ form.last_name }}
-    </div>
+</head>
 
-    <div class="form-group">
-        <label for="id_genero" class="small mb-1">Género</label>
-        <select id="id_genero" name="gender" class="form-control">
-            <option value="">Seleccionar género</option>
-            <option value="masculino">Masculino</option>
-            <option value="femenino">Femenino</option>
-            <option value="otro">Otro</option>
-        </select>
-    </div>    
+<body class="bg-primary">
+    <div id="layoutAuthentication">
+        <div id="layoutAuthentication_content">
+            <main>
+                <div class="container-xl px-4">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-7">
+                            <!-- Basic registration form-->
+                            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                <div class="card-header justify-content-center">
+                                    <h3 class="fw-light my-4">Crear Cuenta</h3>
+                                </div>
+                                <div class="card-body">
+                                    <!-- Registration form-->
+                                    <!-- auth-register-basic.html -->
 
-    <div class="form-group">
-        <label for="id_email" class="small mb-1">Correo electrónico</label>
-        {{ form.email }}
-    </div>
+                                    <form method="post" class="form-signin">
+                                        {% csrf_token %}
 
-    <div class="form-group">
-        <label for="id_password1" class="small mb-1">Contraseña</label>
-        {{ form.password1 }}
-    </div>
+                                        {% if form.errors %}
+                                        <div class="alert alert-danger">
+                                            <strong>Por favor, corrija los siguientes errores:</strong>
+                                            <ul>
+                                                {% for field in form %}
+                                                {% for error in field.errors %}
+                                                <li>{{ field.label }}: {{ error }}</li>
+                                                {% endfor %}
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                        {% endif %}
 
-    <div class="form-group">
-        <label for="id_password2" class="small mb-1">Confirmar Contraseña</label>
-        {{ form.password2 }}
-    </div>
+                                        <div class="form-group">
+                                            <label for="id_username" class="small mb-1">Usuario (Nickname)</label>
+                                            {{ form.username }}
+                                        </div>
 
-<br>
-    <div class="form-check">
-        {{ form.is_staff }}
-        <label class="form-check-label" for="id_es_administrador">Es Administrador</label>
-    </div>
+                                        <div class="form-group">
+                                            <label for="id_username" class="small mb-1">Nombre</label>
+                                            {{ form.nombre }}
+                                        </div>
 
-    <div class="form-check">
-        {{ form.es_vendedor }}
-        <label class="form-check-label" for="id_es_vendedor">Es Vendedor</label>
-    </div>
+                                        <div class="form-group">
+                                            <label for="id_first_name" class="small mb-1">Apellido Paterno</label>
+                                            {{ form.first_name }}
+                                        </div>
 
-    <button type="submit" class="btn btn-primary btn-block col-md-12 mt-4">Crear Cuenta</button>
-</form>
+                                        <div class="form-group">
+                                            <label for="id_last_name" class="small mb-1">Apellido Materno</label>
+                                            {{ form.last_name }}
+                                        </div>
 
-                                        
-                                        
-                                    </div>
-                                    <div class="card-footer text-center">
+                                        <div class="form-group">
+                                            <label for="id_birth_date" class="small mb-1">Fecha de Nacimiento</label>
+                                            {{ form.birth_date }}
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="id_genero" class="small mb-1">Género</label>
+                                            <select id="id_genero" name="gender" class="form-control">
+                                                <option value="">Seleccionar género</option>
+                                                <option value="masculino">Masculino</option>
+                                                <option value="femenino">Femenino</option>
+                                                <option value="otro">Otro</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="id_email" class="small mb-1">Correo electrónico</label>
+                                            {{ form.email }}
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="id_password1" class="small mb-1">Contraseña</label>
+                                            {{ form.password1 }}
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="id_password2" class="small mb-1">Confirmar Contraseña</label>
+                                            {{ form.password2 }}
+                                        </div>
+
+                                        <br>
+                                        <div class="form-check">
+                                            {{ form.is_staff }}
+                                            <label class="form-check-label" for="id_es_administrador">Es
+                                                Administrador</label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            {{ form.es_vendedor }}
+                                            <label class="form-check-label" for="id_es_vendedor">Es Vendedor</label>
+                                        </div>
+
+                                        <button type="submit" class="btn btn-primary btn-block col-md-12 mt-4">Crear
+                                            Cuenta</button>
+                                    </form>
+                                </div>
+                                <div class="card-footer text-center">
                                     <div class="small"><a href="/">¿Ya tienes una cuenta? Inicia sesión</a></div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </main>
-            </div>
-            <div id="layoutAuthentication_footer">
-                <footer class="footer-admin mt-auto footer-dark">
-                    <div class="container-xl px-4">
-                        <div class="row">
-                            <div class="col-md-6 small">Copyright © Your Website 2021</div>
-                            <div class="col-md-6 text-md-end small">
-                                <a href="#!">Privacy Policy</a>
-                                ·
-                                <a href="#!">Terms &amp; Conditions</a>
-                            </div>
+                </div>
+            </main>
+        </div>
+        <div id="layoutAuthentication_footer">
+            <footer class="footer-admin mt-auto footer-dark">
+                <div class="container-xl px-4">
+                    <div class="row">
+                        <div class="col-md-6 small">Copyright © Your Website 2021</div>
+                        <div class="col-md-6 text-md-end small">
+                            <a href="#!">Privacy Policy</a>
+                            ·
+                            <a href="#!">Terms &amp; Conditions</a>
                         </div>
                     </div>
-                </footer>
-            </div>
+                </div>
+            </footer>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="js/scripts.js"></script>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+    <script src="js/scripts.js"></script>
 
-        <script src="https://assets.startbootstrap.com/js/sb-customizer.js"></script>
-        <sb-customizer project="sb-admin-pro"></sb-customizer>
-    <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8b253dfea2ab4077af8c6f58422dfbfd1689876627854" integrity="sha512-bjgnUKX4azu3dLTVtie9u6TKqgx29RBwfj3QXYt5EKfWM/9hPSAI/4qcV5NACjwAo8UtTeWefx6Zq5PHcMm7Tg==" data-cf-beacon='{"rayId":"7ee647480c4f2e5d","version":"2023.7.0","b":1,"token":"6e2c2575ac8f44ed824cef7899ba8463","si":100}' crossorigin="anonymous"></script>
+    <script src="https://assets.startbootstrap.com/js/sb-customizer.js"></script>
+    <sb-customizer project="sb-admin-pro"></sb-customizer>
+    <script defer
+        src="https://static.cloudflareinsights.com/beacon.min.js/v8b253dfea2ab4077af8c6f58422dfbfd1689876627854"
+        integrity="sha512-bjgnUKX4azu3dLTVtie9u6TKqgx29RBwfj3QXYt5EKfWM/9hPSAI/4qcV5NACjwAo8UtTeWefx6Zq5PHcMm7Tg=="
+        data-cf-beacon='{"rayId":"7ee647480c4f2e5d","version":"2023.7.0","b":1,"token":"6e2c2575ac8f44ed824cef7899ba8463","si":100}'
+        crossorigin="anonymous"></script>
+    <!-- Agrega esto al final del cuerpo de tu template, antes de </body> -->
+
+    <script>
+        $(function () {
+            $.datepicker.setDefaults($.datepicker.regional['es-MX']); // Set Spanish locale for Mexico
+            $("#id_birth_date").datepicker({
+                dateFormat: 'dd/mm/yy', // Configura el formato de fecha a "dd/mm/yyyy"
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "1900:{{ 'now'|date:'Y' }}" // Ajusta el rango de años según tus necesidades
+            });
+        });
+    </script>
 </body>
+
 </html>
