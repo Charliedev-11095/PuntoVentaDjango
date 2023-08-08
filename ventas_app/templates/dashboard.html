@@ -84,7 +84,13 @@
                         {% endif %}
                     </td>
                     <td>
-                        <div class="badge bg-primary text-white rounded-pill">Full-time</div>
+                        <div class="badge {% if user.is_active %}bg-success{% else %}bg-danger{% endif%} text-white rounded-pill">
+                            {% if user.is_active %}
+                                Activo
+                            {% else %}
+                                Inactivo
+                            {% endif %}
+                        </div>
                     </td>
                     <td>
                         <a href="#" class="btn btn-datatable btn-icon btn-transparent-dark">
