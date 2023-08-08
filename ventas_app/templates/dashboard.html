@@ -74,7 +74,15 @@
                     <td>{{ user.last_name }}</td>
                     <td>{{ user.gender }}</td>
                     <td>{{ user.email }}</td>
-                    <td>por definir</td>
+                    <td>
+                        {% if user.is_staff %}
+                            Administrador
+                        {% elif user.es_vendedor %}
+                            Vendedor
+                        {% else %}
+                            Otro Rol
+                        {% endif %}
+                    </td>
                     <td>
                         <div class="badge bg-primary text-white rounded-pill">Full-time</div>
                     </td>
