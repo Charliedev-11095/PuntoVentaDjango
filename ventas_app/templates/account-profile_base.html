@@ -47,70 +47,85 @@
                 <div class="card mb-4">
                     <div class="card-header">Detalles de la cuenta</div>
                     <div class="card-body">
-                        <form>
-                            <!-- Form Group (username)-->
+                        <form method="post">
+                            {%csrf_token%}
+
                             <div class="row gx-3 mb-3">
+                            
                                 <div class="col-md-6">
-                                    <label class="small mb-1" for="id_username">Nickname</label>
-                                    <input class="form-control" id="id_username" type="text"
-                                        placeholder="Ingrese el nombre" value="{{user.username}}" required />
+                                <label for="id_username">Nombre de usuario:</label>
+                                <input type="text" name="username" value="{{user.username}}" maxlength="150"
+                                    autofocus="" class="form-control" required="" id="id_username">
                                 </div>
 
                                 <div class="col-md-6">
-                                    <label class="small mb-1" for="id_username">Nombre</label>
-                                    <input class="form-control" id="id_username" type="text"
-                                        placeholder="Ingrese el nombre" value="{{user.nombre}}" required />
+                                <label for="id_nombre">Nombre:</label>
+                                <input type="text" name="nombre" value="{{user.nombre}}" maxlength="30" class="form-control" id="id_nombre">
                                 </div>
-                            </div>
-                            <!-- Form Row-->
-                            <div class="row gx-3 mb-3">
-                                <!-- Form Group (first name)-->
+
                                 <div class="col-md-6">
-                                    <label class="small mb-1" for="id_first_name">Apellido Paterno</label>
-                                    <input class="form-control" id="id_first_name" type="text"
-                                        placeholder="Ingrese su Apellido Paterno" value="{{user.first_name}}" />
+                                <label for="id_first_name">Apellido Paterno:</label>
+                                <input type="text" name="first_name" value="{{user.first_name}}" maxlength="30" class="form-control"
+                                    id="id_first_name">
                                 </div>
-                                <!-- Form Group (last name)-->
+
                                 <div class="col-md-6">
-                                    <label class="small mb-1" for="inputLastName">Apellido Materno</label>
-                                    <input class="form-control" id="inputLastName" type="text"
-                                        placeholder="Enter your last name" value="{{user.last_name}}" />
+                                <label for="id_last_name">Apellido Materno:</label>
+                                <input type="text" name="last_name" value="{{user.last_name}}" maxlength="30" class="form-control"
+                                    id="id_last_name">
                                 </div>
-                            </div>
-                            <!-- Form Row        -->
-                            <div class="row gx-3 mb-3">
-                    
-                            </div>
-                            <!-- Form Group (email address)-->
-                            <div class="mb-3">
-                                <label class="small mb-1" for="inputEmailAddress">Correo Electrónico</label>
-                                <input class="form-control" id="inputEmailAddress" type="email"
-                                    placeholder="Enter your email address" value="{{user.email}}" />
-                            </div>
-                            <!-- Form Row-->
-                            <div class="row gx-3 mb-3">
-                                <!-- Form Group (phone number)-->
+
                                 <div class="col-md-6">
-                                    <label class="small mb-1" for="inputPhone">Número Telefónico</label>
-                                    <input class="form-control" id="inputPhone" type="tel"
-                                        placeholder="Agrega tu Número Telefónico" value="{{user.phone}}" />
+                                <label for="id_email">Correo electrónico:</label>
+                                <input type="email" name="email" value="{{user.email}}" class="form-control" maxlength="320" required=""
+                                    id="id_email">
                                 </div>
-                                <!-- Form Group (birthday)-->
+                            
                                 <div class="col-md-6">
-                                    <label class="small mb-1" for="inputBirthday">Fecha de Nacimiento</label>
-                                    <div class="input-group">
-                                        <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Ingresa tu cumpleaños" value="{{user.birth_date}}" />
-                                        <div class="input-group-append">
-                                            <span class="input-group-text">
-                                                <i class="fas fa-calendar"></i>
-                                            </span>
-                                        </div>
-                                    </div>
+                                <label for="id_phone">Teléfono:</label>
+                                <input type="text" name="phone" value="{{user.phone}}" maxlength="10" class="form-control" id="id_phone">
                                 </div>
-                                
-                            </div>
+
+                                <div class="col-md-6">
+                                <label for="id_password1">Contraseña:</label>
+                                <input type="password" name="password1" autocomplete="new-password" class="form-control"
+                                    required="" id="id_password1">
+                                </div>
+
+                                <div class="col-md-6">
+                                <label for="id_password2">Confirmación de contraseña:</label>
+                                <input type="password" name="password2" autocomplete="new-password" class="form-control"
+                                    required="" id="id_password2">
+                                </div>
+                                <div class="col-md-6">
+                                <label for="id_gender">Género:</label>
+                                <select name="gender" class="form-control" id="id_gender">
+                                    <option value="" selected="">---------</option>
+                                    <option value="masculino">Masculino</option>
+                                    <option value="femenino">Femenino</option>
+                                    <option value="otro">Otro</option>
+                                </select>
+                                </div>
+
+                                <div class="col-md-6">
+                                <label for="id_birth_date">Fecha de Nacimiento:</label>
+                                <input type="text" name="birth_date" value="{{user.birth_date}}" class="form-control"
+                                    id="inputBirthday">
+                                </div>        
+
+                                <div class="col-md-6">
+                                <input type="checkbox" name="is_staff" class="" id="id_is_staff">
+                                <label for="id_is_staff">Es Administrador</label>
+                                </div>
+                           
+                                <div class="col-md-6">
+                                <label for="id_es_vendedor">Es vendedor</label>
+                                <input type="checkbox" name="es_vendedor" class="" id="id_es_vendedor">
+                                </div>
+                                <br>
+                                <br>
                             <!-- Save changes button-->
-                            <button class="btn btn-primary" type="button">Guardar cambios</button>
+                            <button class="btn btn-primary" type="submit">Guardar cambios</button>
                         </form>
                     </div>
                 </div>

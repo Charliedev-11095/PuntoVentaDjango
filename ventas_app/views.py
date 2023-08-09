@@ -52,7 +52,15 @@ def dashboard_view(request):
 def configperfil_view(request):
     if not request.user.is_authenticated:
         return redirect('error')
-    return render(request, 'account-profile_base.html', {})
+
+    if request.method == 'POST':
+        form = RegistroForm(request.POST, instance=request.user)  # Pasa la instancia del usuario actual
+        if form.is_valid():
+            form.save()
+    else:
+        form = RegistroForm(instance=request.user)  # Pasa la instancia del usuario actual
+
+    return render(request, 'account-profile_base.html', {'form': form})
 
 def pago_view(request):
     if not request.user.is_authenticated:
