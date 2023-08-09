@@ -562,13 +562,16 @@
         <script src="https://assets.startbootstrap.com/js/sb-customizer.js"></script>
         <sb-customizer project="sb-admin-pro"></sb-customizer>
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8b253dfea2ab4077af8c6f58422dfbfd1689876627854" integrity="sha512-bjgnUKX4azu3dLTVtie9u6TKqgx29RBwfj3QXYt5EKfWM/9hPSAI/4qcV5NACjwAo8UtTeWefx6Zq5PHcMm7Tg==" data-cf-beacon='{"rayId":"7ee5b152ac77274e","version":"2023.7.0","b":1,"token":"6e2c2575ac8f44ed824cef7899ba8463","si":100}' crossorigin="anonymous"></script>
-<script>
-    $(document).ready(function () {
-        $('#inputBirthday').datepicker({
-            format: 'dd-mm-yyy', // Formato de fecha
-            autoclose: true,      // Cierra automáticamente después de seleccionar una fecha
+    <script>
+        $(function () {
+            $.datepicker.setDefaults($.datepicker.regional['es-MX']); // Set Spanish locale for Mexico
+            $("#inputBirthday").datepicker({
+                dateFormat: 'dd/mm/yy', // Configura el formato de fecha a "dd/mm/yyyy"
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "1900:{{ 'now'|date:'Y' }}" // Ajusta el rango de años según tus necesidades
+            });
         });
-    });
-</script>
+    </script>
 </body>
 </html>
