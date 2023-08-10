@@ -22,21 +22,23 @@
         <!-- Account page navigation-->
         <nav class="nav nav-borders">
             <a class="nav-link ms-0" href="{%url 'configperfil'%}">Perfil</a>
+            <a class="nav-link active" href="{%url 'seguridad'%}">Seguridad</a>
             <a class="nav-link ms-0" href="{%url 'pago'%}">Forma de Pago</a>
-            <a class="nav-link active" href="account-security.html">Seguridad</a>
         </nav>
         <hr class="mt-0 mb-4" />
         <div class="row">
-            <div class="col-lg-8">
+            <div class="col-lg-12">
                 <!-- Change password card-->
                 <div class="card mb-4">
                     <div class="card-header">Cambiar Contraseña</div>
                     <div class="card-body">
+                        
                         <form>
                             <!-- Form Group (current password)-->
                             <div class="mb-3">
                                 <label class="small mb-1" for="currentPassword">Contraseña Actual</label>
-                                <input class="form-control" id="currentPassword" type="password" placeholder="Ingrese la Contraseña Actual" />
+                                <input class="form-control" id="currentPassword" type="password"
+                                    placeholder="Ingrese la Contraseña Actual" />
                             </div>
                             <!-- Form Group (new password)-->
                             <div class="mb-3">
@@ -47,78 +49,27 @@
                             <!-- Form Group (confirm password)-->
                             <div class="mb-3">
                                 <label class="small mb-1" for="confirmPassword">Confirmar Contraseña</label>
-                                <input class="form-control" id="confirmPassword" type="password" placeholder="Confirm new password" />
+                                <input class="form-control" id="confirmPassword" type="password"
+                                    placeholder="Confirm new password" />
                             </div>
                             <button class="btn btn-primary" type="button">Guardar</button>
                         </form>
                     </div>
                 </div>
-                <!-- Security preferences card-->
-                <div class="card mb-4">
-                    <div class="card-header">Preferencias de Seguridad</div>
-                    <div class="card-body">
-                        <!-- Account privacy optinos-->
-                        <h5 class="mb-1">Privadad de la Cuenta</h5>
-                        <p class="small text-muted">Al configurar su cuenta como privada, la información de su perfil y las publicaciones no serán visibles para los usuarios fuera de sus grupos de usuarios.</p>
-                        <form>
-                            <div class="form-check">
-                                <input class="form-check-input" id="radioPrivacy1" type="radio" name="radioPrivacy" checked="" />
-                                <label class="form-check-label" for="radioPrivacy1">Público (las publicaciones están disponibles para todos los usuarios).</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" id="radioPrivacy2" type="radio" name="radioPrivacy" />
-                                <label class="form-check-label" for="radioPrivacy2">Privado (las publicaciones están disponibles solo para los usuarios de sus grupos).</label>
-                            </div>
-                        </form>
-                        <hr class="my-4" />
-                        <!-- Data sharing options-->
-                        <h5 class="mb-1">Compartir datos</h5>
-                        <p class="small text-muted">Compartir datos de uso puede ayudarnos a mejorar nuestros productos y servir mejor a nuestros usuarios mientras navegan por nuestra aplicación. Cuando acepta compartir datos de uso con nosotros, los informes de fallas y los análisis de uso se enviarán automáticamente a nuestro equipo de desarrollo para su investigación.</p>
-                        <form>
-                            <div class="form-check">
-                                <input class="form-check-input" id="radioUsage1" type="radio" name="radioUsage" checked="" />
-                                <label class="form-check-label" for="radioUsage1">Sí, comparta datos e informes de fallas con los desarrolladores de aplicaciones.</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" id="radioUsage2" type="radio" name="radioUsage" />
-                                <label class="form-check-label" for="radioUsage2">No, limitar mi intercambio de datos con los desarrolladores de aplicaciones.</label>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <!-- Two factor authentication card-->
-                <div class="card mb-4">
-                    <div class="card-header">Autenticación de dos factores</div>
-                    <div class="card-body">
-                        <p>Agregue otro nivel de seguridad a su cuenta habilitando la autenticación de dos factores. Le enviaremos un mensaje de texto para verificar sus intentos de inicio de sesión en dispositivos y navegadores no reconocidos.</p>
-                        <form>
-                            <div class="form-check">
-                                <input class="form-check-input" id="twoFactorOn" type="radio" name="twoFactor" checked="" />
-                                <label class="form-check-label" for="twoFactorOn">Encendido</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" id="twoFactorOff" type="radio" name="twoFactor" />
-                                <label class="form-check-label" for="twoFactorOff">Apagado</label>
-                            </div>
-                            <div class="mt-3">
-                                <label class="small mb-1" for="twoFactorSMS">Número SMS</label>
-                                <input class="form-control" id="twoFactorSMS" type="tel" placeholder="Enter a phone number" value="555-123-4567" />
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <!-- Delete account card-->
-                <div class="card mb-4">
-                    <div class="card-header">Eliminar Cuenta</div>
-                    <div class="card-body">
-                        <p>La eliminación de su cuenta es una acción permanente y no se puede deshacer. Si está seguro de que desea eliminar su cuenta, seleccione el botón a continuación.</p>
-                        <button class="btn btn-danger-soft text-danger" type="button">Entiendo los riezgos, borra mi Cuenta.</button>
-                    </div>
-                </div>
             </div>
         </div>
+        
+        <div class="card mb-4">
+            <div class="card-header">Eliminar Cuenta</div>
+            <div class="card-body">
+                <p>La eliminación de su cuenta es una acción permanente y no se puede deshacer. Si está seguro de que
+                    desea eliminar su cuenta, seleccione el botón a continuación.</p>
+                <button class="btn btn-danger-soft text-danger" type="button">Entiendo los riezgos, borra mi
+                    Cuenta.</button>
+            </div>
+        </div>
+    </div>
+    </div>
     </div>
 </main>
 {%endblock%}
