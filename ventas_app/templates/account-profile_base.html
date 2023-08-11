@@ -49,7 +49,112 @@
                     <div class="card-body">
                         <form method="post">
                             {%csrf_token%}
-                            {{form.as_p}}
+                            <p>
+    <label for="id_user_name">Usuario:</label>
+    <input type="text" name="user_name" value="" maxlength="50" class="form-control" required="" id="id_user_name">
+    
+    
+  </p>
+
+  
+  <p>
+    <label for="id_nombre">Nombre:</label>
+    <input type="text" name="nombre" value="" maxlength="30" class="form-control" id="id_nombre">
+    
+    
+  </p>
+
+  
+  <p>
+    <label for="id_email">Correo electrónico:</label>
+    <input type="email" name="email" value="carlo@carlos.com" class="form-control" maxlength="320" required="" id="id_email">
+    
+    
+  </p>
+
+  
+  <p>
+    <label for="id_apellido_paterno">Apellido paterno:</label>
+    <input type="text" name="apellido_paterno" value="rodríguez" maxlength="30" class="form-control" id="id_apellido_paterno">
+    
+    
+  </p>
+
+  
+  <p>
+    <label for="id_apellido_materno">Apellido materno:</label>
+    <input type="text" name="apellido_materno" value="garcía" maxlength="30" class="form-control" id="id_apellido_materno">
+    
+    
+  </p>
+
+  
+  <p>
+    <label for="id_gender">Género:</label>
+    <select name="gender" class="form-control" id="id_gender">
+  <option value="">---------</option>
+
+  <option value="masculino">Masculino</option>
+
+  <option value="femenino">Femenino</option>
+
+  <option value="otro" selected="">Otro</option>
+
+</select>
+    
+    
+  </p>
+
+  
+  <p>
+    <label for="id_phone">Téléfono:</label>
+    <input type="text" name="phone" value="4431025967" maxlength="10" class="form-control" id="id_phone">
+    
+    
+  </p>
+
+  
+  <p>
+    <label for="id_birth_date">Fecha de Nacimiento:</label>
+    <input type="text" name="birth_date" value="{{user.birth_date}}" class="form-control"
+        id="inputBirthday">
+    
+    
+  </p>
+
+  
+  <p>
+    <label for="id_is_staff">Es trabajador:</label>
+    <input type="checkbox" name="is_staff" class="" id="id_is_staff" checked="">
+    
+    
+  </p>
+
+  
+  <p>
+    <label for="id_es_vendedor">Es vendedor:</label>
+    <input type="checkbox" name="es_vendedor" class="" id="id_es_vendedor">
+    
+    
+  </p>
+
+  
+  <p>
+    <label for="id_password1">Contraseña:</label>
+    <input type="password" name="password1" class="form-control" required="" id="id_password1">
+    
+    
+  </p>
+
+  
+  <p>
+    <label for="id_password2">Confirmar contraseña:</label>
+    <input type="password" name="password2" class="form-control" required="" id="id_password2">
+    
+    
+      
+    
+  </p>
                             <br>
                             <br>
                             <!-- Save changes button-->
