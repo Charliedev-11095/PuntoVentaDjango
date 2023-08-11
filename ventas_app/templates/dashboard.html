@@ -71,10 +71,10 @@
             <tbody>
                 {% for user in users %}
                 <tr>
-                    <td>{{ user.username }}</td>
+                    <td>{{ user.user_name }}</td>
                     <td>{{ user.nombre }}</td>
-                    <td>{{ user.first_name }}</td>
-                    <td>{{ user.last_name }}</td>
+                    <td>{{ user.apellido_paterno }}</td>
+                    <td>{{ user.apellido_materno }}</td>
                     <td>{{ user.gender }}</td>
                     <td>{{ user.birth_date }}</td>
                     <td>{{ user.email }}</td>
