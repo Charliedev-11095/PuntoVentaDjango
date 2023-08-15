@@ -54,11 +54,12 @@ def configperfil_view(request):
         return redirect('error')
 
     if request.method == 'POST':
-        form = RegistroForm(request.POST, instance=request.user)  # Pasa la instancia del usuario actual
+        form = RegistroForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
+            return redirect('dashboard') 
     else:
-        form = RegistroForm(instance=request.user)  # Pasa la instancia del usuario actual
+        form = RegistroForm(instance=request.user)  
 
     return render(request, 'account-profile_base.html', {'form': form})
 

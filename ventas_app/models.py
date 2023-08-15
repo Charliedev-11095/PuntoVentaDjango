@@ -2,7 +2,7 @@
 from django.db import models
 from django.conf import settings 
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
+from django.contrib.auth.models import AbstractUser, BaseUserManager
 
 class UsuarioManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
@@ -27,7 +27,7 @@ class UsuarioManager(BaseUserManager):
 
 
 
-class Usuario(AbstractBaseUser, PermissionsMixin):
+class Usuario(AbstractUser):
 
     GENDER_CHOICES = [
         ('masculino', 'Masculino'),
@@ -47,7 +47,6 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(("es trabajador"),default=False)
     es_vendedor = models.BooleanField(("es vendedor"),default=False)
     is_superuser = models.BooleanField(("es superusuario"),default=False)
-       
     objects = UsuarioManager()
 
     USERNAME_FIELD = 'email'
