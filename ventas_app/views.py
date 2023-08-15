@@ -4,10 +4,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.urls import reverse
 from .forms import RegistroForm
-from django.contrib.auth.views import LoginView
 from django.contrib.auth import logout
-from ventas_app.models import Usuario  # Asegúrate de importar tu modelo personalizado Usuario
-
+from ventas_app.models import Usuario
 
 def login_view(request):
     error_message = ""
@@ -49,6 +47,7 @@ def dashboard_view(request):
     return render(request, 'dashboard.html', {'users': users})
 
 
+
 def configperfil_view(request):
     if not request.user.is_authenticated:
         return redirect('error')
@@ -57,11 +56,12 @@ def configperfil_view(request):
         form = RegistroForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
-            return redirect('dashboard') 
+            return redirect('dashboard')
     else:
-        form = RegistroForm(instance=request.user)  
+        form = RegistroForm(instance=request.user)
 
     return render(request, 'account-profile_base.html', {'form': form})
+
 
 def pago_view(request):
     if not request.user.is_authenticated:
