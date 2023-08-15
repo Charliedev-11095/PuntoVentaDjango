@@ -1,9 +1,6 @@
 # Create your models here.
-from datetime import timezone
 from django.db import models
-from django.contrib.auth.models import User
 from django.conf import settings 
-from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 
@@ -17,7 +14,7 @@ class UsuarioManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, password=None, **extra_fields):
+    def create_superuser(self,email, password=None, **extra_fields):
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
 
@@ -26,18 +23,20 @@ class UsuarioManager(BaseUserManager):
         if extra_fields.get('is_superuser') is not True:
             raise ValueError('Superuser must have is_superuser=True.')
 
-        return self.create_user( password, **extra_fields)
+        return self.create_user(email, password, **extra_fields)
+
 
 
 class Usuario(AbstractBaseUser, PermissionsMixin):
+
     GENDER_CHOICES = [
         ('masculino', 'Masculino'),
         ('femenino', 'Femenino'),
         ('otro', 'Otro'),
     ]
 
-    user_name=models.CharField(("Usuario"),max_length=50,unique=True)
     email = models.EmailField(("Correo"),unique=True)
+    user_name = models.CharField(max_length=30, blank=True)
     nombre = models.CharField(max_length=30, blank=True)
     apellido_paterno=models.CharField(max_length=30, blank=True)
     apellido_materno=models.CharField(max_length=30, blank=True)
@@ -47,15 +46,18 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(("está activo"),default=True)
     is_staff = models.BooleanField(("es trabajador"),default=False)
     es_vendedor = models.BooleanField(("es vendedor"),default=False)
-
+    is_superuser = models.BooleanField(("es superusuario"),default=False)
+       
     objects = UsuarioManager()
 
-    USERNAME_FIELD = 'user_name'
+    USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 
-    def __str__(self):
-        return self.user_name
-    
+class Meta:
+        verbose_name = 'Usuario'
+        verbose_name_plural = 'Usuarios'
+
+
 class contrasenas (models.Model):
     contrasena_actual = models.CharField(max_length=50,null=False)
     contrasena_nueva = models.CharField(max_length=50,null=False)
