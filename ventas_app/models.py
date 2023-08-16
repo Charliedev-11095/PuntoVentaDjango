@@ -2,7 +2,8 @@
 from django.db import models
 from django.conf import settings 
 from django.db import models
-from django.contrib.auth.models import AbstractUser, BaseUserManager
+from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 
 class UsuarioManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
@@ -27,16 +28,15 @@ class UsuarioManager(BaseUserManager):
 
 
 
-class Usuario(AbstractUser):
+class Usuario(AbstractBaseUser, PermissionsMixin):
 
     GENDER_CHOICES = [
         ('masculino', 'Masculino'),
         ('femenino', 'Femenino'),
         ('otro', 'Otro'),
     ]
-
+    user_name=models.CharField(("Usuario"),max_length=50,unique=True)
     email = models.EmailField(("Correo"),unique=True)
-    user_name = models.CharField(max_length=30, blank=True)
     nombre = models.CharField(max_length=30, blank=True)
     apellido_paterno=models.CharField(max_length=30, blank=True)
     apellido_materno=models.CharField(max_length=30, blank=True)
