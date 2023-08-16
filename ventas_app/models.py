@@ -49,7 +49,7 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
     is_superuser = models.BooleanField(("es superusuario"),default=False)
     objects = UsuarioManager()
 
-    USERNAME_FIELD = 'email'
+    USERNAME_FIELD = 'user_name'
     REQUIRED_FIELDS = []
 
 class Meta:
