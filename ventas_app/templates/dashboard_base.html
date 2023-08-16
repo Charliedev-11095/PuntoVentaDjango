@@ -188,7 +188,7 @@
                             <div class="dropdown-user-details">
                                 <div class="dropdown-user-details-name">
                                     {% if user.is_authenticated %}
-                                    <div>Bienvenido(a), {{ user.username }}!</div>
+                                    <div>Bienvenido(a), {{ user.user_name }}!</div>
                                 {% else %}
                                     <div>No has iniciado sesión.</div>
                                 {% endif %}
@@ -516,7 +516,7 @@
                             <div class="sidenav-footer-subtitle">Logueado como:</div>
                             <div class="sidenav-footer-title">
                                 {% if user.is_authenticated %}
-                                <div>Bienvenido(a), {{ user.username }}!</div>
+                                <div>Bienvenido(a), {{ user.user_name }}!</div>
                                 {{user.email}}
                             {% else %}
                                 <div>No has iniciado sesión.</div>
