@@ -12,10 +12,11 @@ class RegistroForm(forms.ModelForm):
 
     class Meta:
         model = Usuario
-        fields = ['nombre','email', 'apellido_paterno','apellido_materno', 'gender', 'phone', 'birth_date','is_staff', 'es_vendedor']
+        fields = ['user_name','nombre','email', 'apellido_paterno','apellido_materno', 'gender', 'phone', 'birth_date','is_staff', 'es_vendedor']
 
     def __init__(self, *args, **kwargs):
         super(RegistroForm, self).__init__(*args, **kwargs)
+        self.fields['user_name'].widget.attrs.update({'class': 'form-control'})
         self.fields['nombre'].widget.attrs.update({'class': 'form-control'})
         self.fields['apellido_paterno'].widget.attrs.update({'class': 'form-control'})
         self.fields['apellido_materno'].widget.attrs.update({'class': 'form-control'})
