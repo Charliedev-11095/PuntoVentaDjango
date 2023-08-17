@@ -6,6 +6,8 @@ from django.urls import reverse
 from .forms import RegistroForm
 from django.contrib.auth import logout
 from ventas_app.models import Usuario
+from .forms import PerfilForm
+
 
 def login_view(request):
     error_message = ""
@@ -46,19 +48,18 @@ def dashboard_view(request):
     users = Usuario.objects.all()
     return render(request, 'dashboard.html', {'users': users})
 
-
-
 def configperfil_view(request):
     if not request.user.is_authenticated:
         return redirect('error')
 
     if request.method == 'POST':
-        form = RegistroForm(request.POST, instance=request.user)
-        if form.is_valid():
-            form.save()
-            return redirect('dashboard')
+        form = PerfilForm(request.POST, instance=request.user)
+        if form.has_changed():
+            if form.is_valid():
+                form.save()
+                return redirect('dashboard')
     else:
-        form = RegistroForm(instance=request.user)
+        form = PerfilForm(instance=request.user)
 
     return render(request, 'account-profile_base.html', {'form': form})
 
