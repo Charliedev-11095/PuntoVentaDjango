@@ -15,7 +15,7 @@ class UsuarioManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_superuser(self,email, password=None, **extra_fields):
+    def create_superuser(self,email,password=None, **extra_fields):
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
 
@@ -24,7 +24,7 @@ class UsuarioManager(BaseUserManager):
         if extra_fields.get('is_superuser') is not True:
             raise ValueError('Superuser must have is_superuser=True.')
 
-        return self.create_user(email, password, **extra_fields)
+        return self.create_user(email,password, **extra_fields)
 
 
 
@@ -50,7 +50,7 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
     objects = UsuarioManager()
 
     USERNAME_FIELD = 'user_name'
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ['email']
 
 class Meta:
         verbose_name = 'Usuario'
