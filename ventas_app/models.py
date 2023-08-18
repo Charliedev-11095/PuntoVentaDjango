@@ -39,6 +39,7 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
     nombre = models.CharField(max_length=30, blank=True)
     apellido_paterno=models.CharField(max_length=30, blank=True)
     apellido_materno=models.CharField(max_length=30, blank=True)
+    password=models.CharField(("Contraseña Actual"),max_length=50)
     gender = models.CharField(("género"),max_length=9, choices=GENDER_CHOICES, blank=True)
     phone = models.CharField(("Téléfono"),max_length=10, blank=True)
     birth_date = models.DateField(("Fecha de Nacimiento"),null=True, blank=True)
