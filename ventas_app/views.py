@@ -76,8 +76,8 @@ def configperfil_view(request):
 def seguridad_view(request):
     if not request.user.is_authenticated:
         return redirect('error')
-
     error_message = None  # Mensaje de error por defecto
+    success_message = None  # Mensaje de éxito por defecto
     if request.method == 'POST':
         current_password = request.POST.get('currentPassword')
         new_password = request.POST.get('newPassword')
@@ -86,12 +86,13 @@ def seguridad_view(request):
             if new_password == confirm_password:
                 request.user.set_password(new_password)
                 request.user.save()
-                messages.success(request, '¡Contraseña actualizada correctamente!')
+                success_message = '¡Contraseña actualizada correctamente!'
             else:
                 error_message = 'La nueva contraseña y la confirmación no coinciden.'
         else:
             error_message = 'La contraseña actual es incorrecta.'
-    return render(request, 'account-security.html', {'error_message': error_message})
+    
+    return render(request, 'account-security.html', {'error_message': error_message, 'success_message': success_message})
 
 def pago_view(request):
     if not request.user.is_authenticated:

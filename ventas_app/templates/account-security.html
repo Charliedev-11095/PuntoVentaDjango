@@ -34,12 +34,20 @@
                     <div class="card-body">
                         <form id="cambioContraseñaForm" method="post">
                             {% csrf_token %}
-                             <!-- Mostrar mensaje de error -->
-                             {% if error_message %}
-                             <div class="alert alert-danger mt-3">
-                                 {{ error_message }}
-                             </div>
-                             {% endif %}
+                            <!-- Mostrar mensaje de error -->
+                            {% if error_message %}
+                            <div class="alert alert-danger mt-3">
+                                {{ error_message }}
+                            </div>
+                            {% endif %}
+
+                            <!-- Mostrar mensaje de éxito -->
+                            {% if success_message %}
+                            <div class="alert alert-success mt-3">
+                                {{ success_message }}
+                            </div>
+                            {% endif %}
+
                             <!-- Form Group (current password) -->
                             <div class="mb-3">
                                 <label class="small mb-1" for="currentPassword">Contraseña Actual</label>
@@ -60,7 +68,7 @@
                             </div>
                             <button class="btn btn-primary" type="submit" id="guardarBtn">Guardar</button>
                         </form>
-                        
+
                     </div>
                 </div>
             </div>
