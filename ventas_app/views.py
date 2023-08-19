@@ -7,7 +7,7 @@ from .forms import RegistroForm
 from django.contrib.auth import logout
 from ventas_app.models import Usuario
 from .forms import PerfilForm
-
+from django.contrib import messages
 
 def login_view(request):
     error_message = ""
@@ -60,19 +60,43 @@ def configperfil_view(request):
                 return redirect('dashboard')
     else:
         form = PerfilForm(instance=request.user)
+    error_messages = []
+    if 'user_name' in form.errors:
+        error_messages.append("Error: El campo 'Nombre de usuario' es obligatorio. Por favor, asegúrese de llenar este campo.")
+    if 'email' in form.errors:
+        error_messages.append("Error: El formato del correo electrónico no es válido. Asegúrese de ingresar una dirección de correo válida.")
+    if 'phone' in form.errors:
+        error_messages.append("Error: El número de teléfono no tiene el formato correcto. Por favor, ingrese un número válido.")
+    if 'gender' in form.errors:
+        error_messages.append("Error: Debe seleccionar una opción de género. Asegúrese de elegir entre 'Masculino', 'Femenino' u 'Otro'.")
+    if 'birth_date' in form.errors:
+        error_messages.append("Error: El formato de la fecha de nacimiento no es válido. Ingrese la fecha en el formato correcto.")
+    return render(request, 'account-profile_base.html', {'form': form, 'error_messages': error_messages})
 
-    return render(request, 'account-profile_base.html', {'form': form})
+def seguridad_view(request):
+    if not request.user.is_authenticated:
+        return redirect('error')
 
+    error_message = None  # Mensaje de error por defecto
+    if request.method == 'POST':
+        current_password = request.POST.get('currentPassword')
+        new_password = request.POST.get('newPassword')
+        confirm_password = request.POST.get('confirmPassword')
+        if request.user.check_password(current_password):
+            if new_password == confirm_password:
+                request.user.set_password(new_password)
+                request.user.save()
+                messages.success(request, '¡Contraseña actualizada correctamente!')
+            else:
+                error_message = 'La nueva contraseña y la confirmación no coinciden.'
+        else:
+            error_message = 'La contraseña actual es incorrecta.'
+    return render(request, 'account-security.html', {'error_message': error_message})
 
 def pago_view(request):
     if not request.user.is_authenticated:
         return redirect('error')
     return render(request, 'account-billing.html', {})
-
-def seguridad_view(request):
-    if not request.user.is_authenticated:
-        return redirect('error')
-    return render(request, 'account-security.html', {})
 
 def error404_view(request):
     return render(request, 'error-404.html', {})

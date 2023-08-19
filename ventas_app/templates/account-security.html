@@ -32,33 +32,40 @@
                 <div class="card mb-4">
                     <div class="card-header">Cambiar Contraseña</div>
                     <div class="card-body">
-                        
-                        <form>
-                            <!-- Form Group (current password)-->
+                        <form id="cambioContraseñaForm" method="post">
+                            {% csrf_token %}
+                             <!-- Mostrar mensaje de error -->
+                             {% if error_message %}
+                             <div class="alert alert-danger mt-3">
+                                 {{ error_message }}
+                             </div>
+                             {% endif %}
+                            <!-- Form Group (current password) -->
                             <div class="mb-3">
                                 <label class="small mb-1" for="currentPassword">Contraseña Actual</label>
-                                <input class="form-control" id="currentPassword" type="password"
-                                    placeholder="Ingrese la Contraseña Actual" />
+                                <input class="form-control" id="currentPassword" name="currentPassword" type="password"
+                                    placeholder="Ingrese la Contraseña Actual" required />
                             </div>
-                            <!-- Form Group (new password)-->
+                            <!-- Form Group (new password) -->
                             <div class="mb-3">
                                 <label class="small mb-1" for="newPassword">Contraseña Nueva</label>
-                                <input class="form-control" id="newPassword" type="password" placeholder="Ingrese la Nueva Contraseña
-                                " />
+                                <input class="form-control" id="newPassword" name="newPassword" type="password"
+                                    placeholder="Ingrese la Nueva Contraseña" required />
                             </div>
-                            <!-- Form Group (confirm password)-->
+                            <!-- Form Group (confirm password) -->
                             <div class="mb-3">
                                 <label class="small mb-1" for="confirmPassword">Confirmar Contraseña</label>
-                                <input class="form-control" id="confirmPassword" type="password"
-                                    placeholder="Confirm new password" />
+                                <input class="form-control" id="confirmPassword" name="confirmPassword" type="password"
+                                    placeholder="Confirmar nueva contraseña" required />
                             </div>
-                            <button class="btn btn-primary" type="button">Guardar</button>
+                            <button class="btn btn-primary" type="submit" id="guardarBtn">Guardar</button>
                         </form>
+                        
                     </div>
                 </div>
             </div>
         </div>
-        
+
         <div class="card mb-4">
             <div class="card-header">Eliminar Cuenta</div>
             <div class="card-body">

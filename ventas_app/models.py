@@ -3,6 +3,7 @@ from django.db import models
 from django.conf import settings 
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
+from django import forms
 
 class UsuarioManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
@@ -56,11 +57,10 @@ class Meta:
         verbose_name = 'Usuario'
         verbose_name_plural = 'Usuarios'
 
-
-class contrasenas (models.Model):
-    contrasena_actual = models.CharField(max_length=50,null=False)
-    contrasena_nueva = models.CharField(max_length=50,null=False)
-    repetir_contrasena = models.CharField(max_length=50,null=False)
+class CambioContraseñaForm(forms.Form):
+    currentPassword = forms.CharField(label="Contraseña Actual", widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+    newPassword = forms.CharField(label="Contraseña Nueva", widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+    confirmPassword = forms.CharField(label="Confirmar Contraseña", widget=forms.PasswordInput(attrs={'class': 'form-control'}))
 
 #Tabla Marcas
 class marca(models.Model):
