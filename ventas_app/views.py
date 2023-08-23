@@ -103,3 +103,7 @@ def error404_view(request):
     return render(request, 'error-404.html', {})
 
 
+def eliminar_usuario(request, usuario_id):
+    usuario = Usuario.objects.get(id=usuario_id)
+    usuario.delete()
+    return redirect('dashboard')

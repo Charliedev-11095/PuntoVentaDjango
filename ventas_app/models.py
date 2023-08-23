@@ -26,8 +26,6 @@ class UsuarioManager(BaseUserManager):
 
         return self.create_user(email,password, **extra_fields)
 
-
-
 class Usuario(AbstractBaseUser, PermissionsMixin):
 
     GENDER_CHOICES = [
