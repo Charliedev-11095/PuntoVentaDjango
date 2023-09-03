@@ -57,72 +57,7 @@
                                         </div>
                                         {% endif %}
 
-                                        <div class="form-group">
-                                            <label for="id_username" class="small mb-1">Usuario (Nickname)</label>
-                                            {{ form.username }}
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="id_username" class="small mb-1">Nombre</label>
-                                            {{ form.nombre }}
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="id_first_name" class="small mb-1">Apellido Paterno</label>
-                                            {{ form.first_name }}
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="id_last_name" class="small mb-1">Apellido Materno</label>
-                                            {{ form.last_name }}
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="id_birth_date" class="small mb-1">Fecha de Nacimiento</label>
-                                            {{ form.birth_date }}
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="id_genero" class="small mb-1">Género</label>
-                                            <select id="id_genero" name="gender" class="form-control">
-                                                <option value="">Seleccionar género</option>
-                                                <option value="masculino">Masculino</option>
-                                                <option value="femenino">Femenino</option>
-                                                <option value="otro">Otro</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="id_email" class="small mb-1">Correo electrónico</label>
-                                            {{ form.email }}
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="id_phone" class="small mb-1">Teléfono</label>
-                                            {{ form.phone }}
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="id_password1" class="small mb-1">Contraseña</label>
-                                            {{ form.password1 }}
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="id_password2" class="small mb-1">Confirmar Contraseña</label>
-                                            {{ form.password2 }}
-                                        </div>
-
-                                        <br>
-                                        <div class="form-check">
-                                            {{ form.is_staff }}
-                                            <label class="form-check-label" for="id_es_administrador">Es
-                                                Administrador</label>
-                                        </div>
-
-                                        <div class="form-check">
-                                            {{ form.es_vendedor }}
-                                            <label class="form-check-label" for="id_es_vendedor">Es Vendedor</label>
-                                        </div>
+                                       {{form.as_p}}
 
                                         <button type="submit" class="btn btn-primary btn-block col-md-12 mt-4">Crear
                                             Cuenta</button>

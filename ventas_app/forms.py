@@ -22,8 +22,8 @@ class PerfilForm(forms.ModelForm):
         self.fields['gender'].widget.attrs.update({'class': 'form-control'})
         self.fields['phone'].widget.attrs.update({'class': 'form-control'})
         self.fields['birth_date'].widget.attrs.update({'class': 'form-control'})
-        self.fields['is_staff'].widget.attrs.update({'class': 'form-control'})
-        self.fields['es_vendedor'].widget.attrs.update({'class': 'form-control'})
+        self.fields['is_staff'].widget.attrs.update()
+        self.fields['es_vendedor'].widget.attrs.update()
 
 class ProfileImageForm(forms.ModelForm):
     class Meta:

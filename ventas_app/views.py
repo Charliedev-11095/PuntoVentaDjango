@@ -28,17 +28,15 @@ def logout_view(request):
     logout(request)
     return redirect('login')  # Redirige a la página de inicio de sesión después del logout
 
-from django.shortcuts import render, redirect
-from .forms import RegistroForm
 
 def registro_view(request):
     if request.method == 'POST':
-        form = RegistroForm(request.POST)
+        form = PerfilForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('login')  # Cambiar por la URL a la que se redireccionará después del registro exitoso
     else:
-        form = RegistroForm()
+        form = PerfilForm()
     return render(request, 'auth-register-basic.html', {'form': form})
 
 
@@ -74,6 +72,18 @@ def configperfil_view(request):
         error_messages.append("Error: El formato de la fecha de nacimiento no es válido. Ingrese la fecha en el formato correcto.")
     return render(request, 'account-profile_base.html', {'form': form, 'error_messages': error_messages})
 
+
+def ImagenPerfil_view(request):
+     if request.method == 'POST':
+        form = ProfileImageForm(request.POST, request.FILES, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('configperfil')  # se redirige a la página de inicio del sistema después de guardar la imagen
+        else:
+            form = ProfileImageForm(instance=request.user)
+            return render(request, 'account-profile_base.html', {'form': form})
+
+
 def seguridad_view(request):
     if not request.user.is_authenticated:
         return redirect('error')
@@ -100,20 +110,12 @@ def pago_view(request):
         return redirect('error')
     return render(request, 'account-billing.html', {})
 
-def error404_view(request):
-    return render(request, 'error-404.html', {})
 
 def eliminar_usuario(request, usuario_id):
     usuario = Usuario.objects.get(id=usuario_id)
     usuario.delete()
     return redirect('dashboard')
 
-def ImagenPerfil_view(request):
-     if request.method == 'POST':
-        form = ProfileImageForm(request.POST, request.FILES, instance=request.user)
-        if form.is_valid():
-            form.save()
-            return redirect('dashboard')  # Ajusta la URL de redirección según tu proyecto
-        else:
-            form = ProfileImageForm(instance=request.user)
-            return render(request, 'account-profile_base.html', {'form': form})
+
+def error404_view(request):
+    return render(request, 'error-404.html', {})
