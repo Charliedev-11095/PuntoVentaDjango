@@ -28,18 +28,27 @@
     <hr class="mt-0 mb-4" />
     <div class="row">
       <div class="col-xl-4">
-        <!-- Profile picture card-->
         <div class="card mb-4 mb-xl-0">
           <div class="card-header">Foto de Perfil</div>
-          <div class="card-body text-center">
-            <!-- Profile picture image-->
-            <img class="img-account-profile rounded-circle mb-2"
-              src="{%static 'assets/img/illustrations/profiles/profile-1.png' %}" alt="" />
-            <!-- Profile picture help block-->
-            <div class="small font-italic text-muted mb-4">JPG o PNG no mayor a 5 MB</div>
-            <!-- Profile picture upload button-->
-            <button class="btn btn-primary" type="button">Subir nueva imagen</button>
-          </div>
+          <form method="post" enctype="multipart/form-data" action="{% url 'imagenPerfil' %}">
+            {% csrf_token %}
+            <div class="card-body text-center">
+              <!-- Profile picture image -->
+              {% if request.user.image %}
+              <img class="img-account-profile rounded-circle mb-2" src="{{ request.user.image.url }}" alt="Foto de perfil" />
+              {% else %}
+              <img class="img-account-profile rounded-circle mb-2" src="{% static 'assets/img/illustrations/profiles/profile-1.png' %}" alt="Foto de perfil por defecto" />
+              {% endif %}
+              <!-- Profile picture help block -->
+              <div class="small font-italic text-muted mb-4">JPG o PNG no mayor a 5 MB</div>
+              <!-- Profile picture upload button -->
+              <div class="form-group">
+                <input type="file" class="form-control" name="image" id="customFile" />
+              </div>
+              <br>
+              <button class="btn btn-primary" type="submit">Subir nueva imagen</button>
+            </div>
+          </form>
         </div>
       </div>
       <div class="col-xl-8">
@@ -47,27 +56,27 @@
         <div class="card mb-4">
           <div class="card-header">Detalles de la cuenta</div>
           <div class="card-body">
-            <form method="post" action="">
+            <form method="post"action="{% url 'configperfil' %}">
               {% csrf_token %}
               {% if error_messages %}
               <div class="alert alert-danger">
-                  <ul>
-                      {% for error in error_messages %}
-                      <li>{{ error }}</li>
-                      {% endfor %}
-                  </ul>
+                <ul>
+                  {% for error in error_messages %}
+                  <li>{{ error }}</li>
+                  {% endfor %}
+                </ul>
               </div>
               {% endif %}
               <div class="row">
                 <div class="col-md-6 col-sm-6">
                   <label for="id_user_name">Nombre de usuario:</label>
-                  <input type="text" name="user_name" value="{{user.user_name}}" maxlength="30" class="form-control" 
-                  id="id_user_name">
+                  <input type="text" name="user_name" value="{{user.user_name}}" maxlength="30" class="form-control"
+                    id="id_user_name">
                 </div>
 
                 <div class="col-md-6 col-sm-6">
                   <label for="id_nombre">Nombre de pila:</label>
-                  <input type="text" name="nombre" value="{{user.nombre}}" maxlength="30" class="form-control" 
+                  <input type="text" name="nombre" value="{{user.nombre}}" maxlength="30" class="form-control"
                     id="id_nombre">
                 </div>
               </div>
@@ -75,13 +84,13 @@
               <div class="row">
                 <div class="col-md-6 col-sm-6">
                   <label for="id_apellido_paterno">Apellido paterno:</label>
-                  <input type="text" name="apellido_paterno" value="{{user.apellido_paterno}}" maxlength="30" 
+                  <input type="text" name="apellido_paterno" value="{{user.apellido_paterno}}" maxlength="30"
                     class="form-control" id="id_apellido_paterno">
                 </div>
 
                 <div class="col-md-6 col-sm-6">
                   <label for="id_apellido_materno">Apellido materno:</label>
-                  <input type="text" name="apellido_materno" value="{{user.apellido_materno}}" maxlength="30" 
+                  <input type="text" name="apellido_materno" value="{{user.apellido_materno}}" maxlength="30"
                     class="form-control" id="id_apellido_materno">
                 </div>
               </div>
@@ -89,13 +98,13 @@
               <div class="row">
                 <div class="col-md-6 col-sm-6">
                   <label for="id_email">Correo electrónico:</label>
-                  <input type="email" name="email" value="{{user.email}}" class="form-control" maxlength="320" 
-                     id="id_email">
+                  <input type="email" name="email" value="{{user.email}}" class="form-control" maxlength="320"
+                    id="id_email">
                 </div>
 
                 <div class="col-md-6 col-sm-6">
                   <label for="id_gender">Género:</label>
-                  <select name="gender" class="form-control" id="id_gender" >
+                  <select name="gender" class="form-control" id="id_gender">
                     <option value="">---------</option>
                     <option value="masculino">Masculino</option>
                     <option value="femenino">Femenino</option>
@@ -107,18 +116,18 @@
               <div class="row">
                 <div class="col-md-6 col-sm-6">
                   <label for="id_phone">Teléfono:</label>
-                  <input type="text" name="phone" value="{{user.phone}}" maxlength="15" class="form-control" 
+                  <input type="text" name="phone" value="{{user.phone}}" maxlength="15" class="form-control"
                     id="id_phone">
                 </div>
 
                 <div class="col-md-6 col-sm-6">
                   <label for="id_birth_date">Fecha de Nacimiento:</label>
-                  <input type="text" name="birth_date" value="{{user.birth_date}}" class="form-control" 
+                  <input type="text" name="birth_date" value="{{user.birth_date}}" class="form-control"
                     id="inputBirthday">
                 </div>
               </div>
 
-            <!--<div class="row">
+              <!--<div class="row">
                 <div class="col-md-6 col-sm-6">
                   <label for="id_password1">Contraseña:</label>
                   <input type="password" name="password1" class="form-control"  id="id_password1">

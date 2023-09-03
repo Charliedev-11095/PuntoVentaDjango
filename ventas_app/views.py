@@ -8,6 +8,7 @@ from django.contrib.auth import logout
 from ventas_app.models import Usuario
 from .forms import PerfilForm
 from django.contrib import messages
+from .forms import ProfileImageForm
 
 def login_view(request):
     error_message = ""
@@ -102,8 +103,17 @@ def pago_view(request):
 def error404_view(request):
     return render(request, 'error-404.html', {})
 
-
 def eliminar_usuario(request, usuario_id):
     usuario = Usuario.objects.get(id=usuario_id)
     usuario.delete()
     return redirect('dashboard')
+
+def ImagenPerfil_view(request):
+     if request.method == 'POST':
+        form = ProfileImageForm(request.POST, request.FILES, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('dashboard')  # Ajusta la URL de redirección según tu proyecto
+        else:
+            form = ProfileImageForm(instance=request.user)
+            return render(request, 'account-profile_base.html', {'form': form})

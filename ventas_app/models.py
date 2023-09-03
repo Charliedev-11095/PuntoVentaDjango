@@ -18,16 +18,13 @@ class UsuarioManager(BaseUserManager):
     def create_superuser(self,email,password=None, **extra_fields):
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
-
         if extra_fields.get('is_staff') is not True:
             raise ValueError('Superuser must have is_staff=True.')
         if extra_fields.get('is_superuser') is not True:
             raise ValueError('Superuser must have is_superuser=True.')
-
         return self.create_user(email,password, **extra_fields)
 
 class Usuario(AbstractBaseUser, PermissionsMixin):
-
     GENDER_CHOICES = [
         ('masculino', 'Masculino'),
         ('femenino', 'Femenino'),
@@ -38,16 +35,16 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
     nombre = models.CharField(max_length=30, blank=True)
     apellido_paterno=models.CharField(max_length=30, blank=True)
     apellido_materno=models.CharField(max_length=30, blank=True)
-    password=models.CharField(("Contraseña Actual"),max_length=50)
+    password=models.CharField(("Contraseña Actual"),max_length=88)
     gender = models.CharField(("género"),max_length=9, choices=GENDER_CHOICES, blank=True)
     phone = models.CharField(("Téléfono"),max_length=10, blank=True)
     birth_date = models.DateField(("Fecha de Nacimiento"),null=True, blank=True)
+    image = models.ImageField(("Imagen"),upload_to='profile_pics', blank=True)
     is_active = models.BooleanField(("está activo"),default=True)
     is_staff = models.BooleanField(("es trabajador"),default=False)
     es_vendedor = models.BooleanField(("es vendedor"),default=False)
     is_superuser = models.BooleanField(("es superusuario"),default=False)
     objects = UsuarioManager()
-
     USERNAME_FIELD = 'user_name'
     REQUIRED_FIELDS = ['email']
 

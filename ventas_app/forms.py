@@ -8,9 +8,10 @@ class RegistroForm(forms.ModelForm):
     password2 = forms.CharField(label="Confirmar contraseña", widget=forms.PasswordInput(attrs={'class': 'form-control'}))
 
 class PerfilForm(forms.ModelForm):
+    profile_picture = forms.ImageField(label='Foto de perfil', required=False)
     class Meta:
         model = Usuario
-        fields = ['user_name','nombre', 'apellido_paterno', 'apellido_materno', 'gender', 'phone', 'birth_date','is_staff', 'es_vendedor']
+        fields = ['user_name','nombre', 'apellido_paterno', 'apellido_materno', 'gender', 'phone', 'birth_date','image','is_staff', 'es_vendedor']
 
     def __init__(self, *args, **kwargs):
         super(PerfilForm, self).__init__(*args, **kwargs)
@@ -23,3 +24,15 @@ class PerfilForm(forms.ModelForm):
         self.fields['birth_date'].widget.attrs.update({'class': 'form-control'})
         self.fields['is_staff'].widget.attrs.update({'class': 'form-control'})
         self.fields['es_vendedor'].widget.attrs.update({'class': 'form-control'})
+
+class ProfileImageForm(forms.ModelForm):
+    class Meta:
+        model = Usuario
+        fields = ['image']
+
+def __init__(self, *args, **kwargs):
+    super(ProfileImageForm, self).__init__(*args, **kwargs)
+    self.fields['image'].widget.attrs.update({'class': 'form-control'})
+
+
+
