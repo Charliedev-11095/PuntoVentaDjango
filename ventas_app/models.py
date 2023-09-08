@@ -33,10 +33,10 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
         ('otro', 'Otro'),
     ]
     user_name=models.CharField(("Usuario"),max_length=50,unique=True)
-    email = models.EmailField(("Correo"),unique=True)
     nombre = models.CharField(max_length=30, blank=True)
     apellido_paterno=models.CharField(max_length=30, blank=True)
     apellido_materno=models.CharField(max_length=30, blank=True)
+    email = models.EmailField(("Correo"),unique=True)
     password = models.CharField(("Contraseña"), max_length=128)
     password1 = models.CharField(("Nueva contraseña"), max_length=128)
     password2 = models.CharField(("Confirmar contraseña"), max_length=128)
