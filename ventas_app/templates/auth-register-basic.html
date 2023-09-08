@@ -41,7 +41,7 @@
                                     <!-- Registration form-->
                                     <!-- auth-register-basic.html -->
 
-                                    <form method="post" class="form-signin">
+                                    <!-- <form method="post" class="form-signin">
                                         {% csrf_token %}
 
                                         {% if form.errors %}
@@ -57,10 +57,93 @@
                                         </div>
                                         {% endif %}
 
-                                       {{form.as_p}}
+                                       {{form.as_p}} -->
 
-                                        <button type="submit" class="btn btn-primary btn-block col-md-12 mt-4">Crear
-                                            Cuenta</button>
+                                    <form method="post" class="form-signin">
+                                        {% csrf_token %}
+                                        <p>
+                                            <label for="id_user_name">Usuario:</label>
+                                            <input type="text" name="user_name" maxlength="50" class="form-control"
+                                                required="" id="id_user_name">
+                                        </p>
+
+                                        <p>
+                                            <label for="id_nombre">Nombre:</label>
+                                            <input type="text" name="nombre" maxlength="30" class="form-control"
+                                                id="id_nombre">
+                                        </p>
+
+                                        <p>
+                                            <label for="id_email">Correo electrónico:</label>
+                                            <input type="email" name="email" maxlength="254" class="form-control"
+                                                required="" id="id_email">
+                                        </p>
+
+                                        <p>
+                                            <label for="id_apellido_paterno">Apellido paterno:</label>
+                                            <input type="text" name="apellido_paterno" maxlength="30"
+                                                class="form-control" required="" id="id_apellido_paterno">
+                                        </p>
+
+                                        <p>
+                                            <label for="id_apellido_materno">Apellido materno:</label>
+                                            <input type="text" name="apellido_materno" maxlength="30"
+                                                class="form-control" required="" id="id_apellido_materno">
+                                        </p>
+
+                                        <p>
+                                            <label for="id_password">Contraseña:</label>
+                                            <input type="password" name="password" autocomplete="new-password"
+                                                class="form-control" required="" id="id_password">
+                                        </p>
+
+                                        <p>
+                                            <label for="id_password1">Confirmar contraseña:</label>
+                                            <input type="password" name="password2" autocomplete="new-password"
+                                                class="form-control" required="" id="id_password2">
+                                        </p>
+
+                                        <p>
+                                            <label for="id_gender">Género:</label>
+                                            <select name="gender" class="form-control" required="" id="id_gender">
+                                                <option value="" selected="">---------</option>
+                                                <option value="masculino">Masculino</option>
+                                                <option value="femenino">Femenino</option>
+                                                <option value="otro">Otro</option>
+                                            </select>
+                                        </p>
+
+                                        <p>
+                                            <label for="id_phone">Téléfono:</label>
+                                            <input type="text" name="phone" maxlength="10" required="" class="form-control"
+                                                id="id_phone">
+                                        </p>
+
+                                        <p>
+                                                <label for="id_birth_date">Fecha de Nacimiento:</label>
+                                                <input type="text" name="birth_date" value="{{user.birth_date}}" class="form-control"
+                                                  id="inputBirthday">
+                                        </p>
+
+                                       <p>
+                                        <label for="id_is_staff">Es empleado:</label>
+                                        <input type="checkbox" name="is_staff"  id="id_is_staff">
+                                       </p>
+
+                                        <p>
+                                            <label for="id_es_vendedor">Es vendedor:</label>
+                                            <input type="checkbox" name="es_vendedor"  id="id_es_vendedor">
+                                        </p>
+
+                                        <p>
+                                            <label for="id_image">Imagen:</label>
+                                            <input type="file" name="image" accept="image/*" class="form-control-file"
+                                                id="id_image">
+                                        </p>
+
+                                     
+                                    <button type="submit" class="btn btn-primary btn-block col-md-12 mt-4">Crear
+                                        Cuenta</button>
                                     </form>
                                 </div>
                                 <div class="card-footer text-center">
@@ -103,7 +186,7 @@
     <script>
         $(function () {
             $.datepicker.setDefaults($.datepicker.regional['es-MX']); // Set Spanish locale for Mexico
-            $("#id_birth_date").datepicker({
+            $("#inputBirthday").datepicker({
                 dateFormat: 'dd/mm/yy', // Configura el formato de fecha a "dd/mm/yyyy"
                 changeMonth: true,
                 changeYear: true,

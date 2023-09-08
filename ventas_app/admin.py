@@ -1,5 +1,4 @@
 from django.contrib import admin
-from django.contrib.admin import AdminSite
 from .models import Usuario, marca, Domicilio, DatosContacto, DatosFiscales, DatosPersonales, \
     UsuariosAcceso, Clientes, Negocio, DepartamentoProducto, UnidadesMedidaProducto, Productos, \
     Cajas, MovimientosCaja, Ventas, DetalleVentas

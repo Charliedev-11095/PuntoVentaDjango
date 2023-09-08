@@ -6,23 +6,25 @@ from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseU
 from django import forms
 
 class UsuarioManager(BaseUserManager):
-    def create_user(self, email, password=None, **extra_fields):
+    def create_user(self, user_name, email, password=None, **extra_fields):
         if not email:
-            raise ValueError('El correo electrónico debe ser proporcionado')
+            raise ValueError("El campo de correo electrónico es obligatorio")
         email = self.normalize_email(email)
-        user = self.model(email=email, **extra_fields)
+        user = self.model(user_name=user_name, email=email, **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self,email,password=None, **extra_fields):
+    def create_superuser(self, user_name, email, password=None, **extra_fields):
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
+
         if extra_fields.get('is_staff') is not True:
-            raise ValueError('Superuser must have is_staff=True.')
+            raise ValueError("Los superusuarios deben tener is_staff=True.")
         if extra_fields.get('is_superuser') is not True:
-            raise ValueError('Superuser must have is_superuser=True.')
-        return self.create_user(email,password, **extra_fields)
+            raise ValueError("Los superusuarios deben tener is_superuser=True.")
+        return self.create_user(user_name, email, password, **extra_fields)
+
 
 class Usuario(AbstractBaseUser, PermissionsMixin):
     GENDER_CHOICES = [
@@ -35,7 +37,9 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
     nombre = models.CharField(max_length=30, blank=True)
     apellido_paterno=models.CharField(max_length=30, blank=True)
     apellido_materno=models.CharField(max_length=30, blank=True)
-    password=models.CharField(("Contraseña Actual"),max_length=88)
+    password = models.CharField(("Contraseña"), max_length=128)
+    password1 = models.CharField(("Nueva contraseña"), max_length=128)
+    password2 = models.CharField(("Confirmar contraseña"), max_length=128)
     gender = models.CharField(("género"),max_length=9, choices=GENDER_CHOICES, blank=True)
     phone = models.CharField(("Téléfono"),max_length=10, blank=True)
     birth_date = models.DateField(("Fecha de Nacimiento"),null=True, blank=True)

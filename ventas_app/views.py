@@ -3,12 +3,12 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.urls import reverse
-from .forms import RegistroForm
 from django.contrib.auth import logout
 from ventas_app.models import Usuario
 from .forms import PerfilForm
-from django.contrib import messages
 from .forms import ProfileImageForm
+from django.contrib.auth.hashers import make_password
+
 
 def login_view(request):
     error_message = ""
@@ -29,12 +29,37 @@ def logout_view(request):
     return redirect('login')  # Redirige a la página de inicio de sesión después del logout
 
 
+from django.contrib.auth.hashers import make_password
+from django.shortcuts import render, redirect
+from .forms import PerfilForm  # Asegúrate de importar tu formulario
+
+from django.contrib.auth.hashers import make_password
+from django.shortcuts import render, redirect
+from .forms import PerfilForm  # Asegúrate de importar tu formulario
+
 def registro_view(request):
     if request.method == 'POST':
         form = PerfilForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('login')  # Cambiar por la URL a la que se redireccionará después del registro exitoso
+            # Obtén las contraseñas del formulario
+            password = form.cleaned_data['password']
+            password2 = form.cleaned_data['password2']
+
+            # Verifica que las contraseñas coincidan
+            if password == password2:
+                # Encripta ambas contraseñas antes de guardarlas
+                hashed_password = make_password(password)
+                hashed_password2 = make_password(password2)
+
+                # Crea una instancia del usuario, establece las contraseñas encriptadas y guarda el usuario
+                usuario = form.save(commit=False)
+                usuario.password = hashed_password
+                usuario.password2 = hashed_password2  # Agrega el campo password2 en tu modelo Usuario
+                usuario.save()
+                return redirect('login')  # Cambiar por la URL a la que se redireccionará después del registro exitoso
+            else:
+                # Si las contraseñas no coinciden, muestra un error en el formulario
+                form.add_error('password2', 'Las contraseñas no coinciden')
     else:
         form = PerfilForm()
     return render(request, 'auth-register-basic.html', {'form': form})
