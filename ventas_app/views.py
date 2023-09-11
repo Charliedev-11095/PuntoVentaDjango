@@ -39,6 +39,7 @@ from .forms import PerfilForm  # Asegúrate de importar tu formulario
 
 def registro_view(request):
     if request.method == 'POST':
+        # Procesa el formulario de registro
         form = PerfilForm(request.POST)
         if form.is_valid():
             # Obtén las contraseñas del formulario
@@ -49,12 +50,16 @@ def registro_view(request):
             if password == password2:
                 # Encripta ambas contraseñas antes de guardarlas
                 hashed_password = make_password(password)
-                hashed_password2 = make_password(password2)
 
                 # Crea una instancia del usuario, establece las contraseñas encriptadas y guarda el usuario
                 usuario = form.save(commit=False)
                 usuario.password = hashed_password
-                usuario.password2 = hashed_password2  # Agrega el campo password2 en tu modelo Usuario
+
+                # Procesa el formulario de la imagen de perfil
+                image_form = ProfileImageForm(request.POST, request.FILES)
+                if image_form.is_valid():
+                    usuario.image = image_form.cleaned_data['image']
+
                 usuario.save()
                 return redirect('login')  # Cambiar por la URL a la que se redireccionará después del registro exitoso
             else:
@@ -62,8 +67,9 @@ def registro_view(request):
                 form.add_error('password2', 'Las contraseñas no coinciden')
     else:
         form = PerfilForm()
-    return render(request, 'auth-register-basic.html', {'form': form})
+        image_form = ProfileImageForm()
 
+    return render(request, 'auth-register-basic.html', {'form': form, 'image_form': image_form})
 
 def dashboard_view(request):
     if not request.user.is_authenticated:

@@ -12,7 +12,7 @@ class PerfilForm(forms.ModelForm):
 
     class Meta:
         model = Usuario
-        fields = ['user_name','email','nombre', 'apellido_paterno','password','password2', 'apellido_materno', 'gender', 'phone', 'birth_date','profile_picture','is_staff', 'es_vendedor']
+        fields = ['user_name','email','nombre', 'apellido_paterno','password','password2', 'apellido_materno', 'gender', 'phone', 'birth_date','image','is_staff', 'es_vendedor']
 
     def __init__(self, *args, **kwargs):
         super(PerfilForm, self).__init__(*args, **kwargs)
@@ -26,6 +26,7 @@ class PerfilForm(forms.ModelForm):
         self.fields['gender'].widget.attrs.update({'class': 'form-control'})
         self.fields['phone'].widget.attrs.update({'class': 'form-control'})
         self.fields['birth_date'].widget.attrs.update({'class': 'form-control'})
+        self.fields['image'].widget.attrs.update({'class': 'form-control'})
         self.fields['is_staff'].widget.attrs.update()
         self.fields['es_vendedor'].widget.attrs.update()
 
@@ -33,6 +34,7 @@ class ProfileImageForm(forms.ModelForm):
     class Meta:
         model = Usuario
         fields = ['image']
+
 
 def __init__(self, *args, **kwargs):
     super(ProfileImageForm, self).__init__(*args, **kwargs)

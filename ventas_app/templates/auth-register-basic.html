@@ -59,7 +59,8 @@
 
                                        {{form.as_p}} -->
 
-                                    <form method="post" class="form-signin">
+                                       <form method="post" class="form-signin" enctype="multipart/form-data">
+
                                         {% csrf_token %}
                                         <p>
                                             <label for="id_user_name">Usuario:</label>

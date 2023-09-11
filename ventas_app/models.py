@@ -43,7 +43,7 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
     gender = models.CharField(("género"),max_length=9, choices=GENDER_CHOICES, blank=True)
     phone = models.CharField(("Téléfono"),max_length=10, blank=True)
     birth_date = models.DateField(("Fecha de Nacimiento"),null=True, blank=True)
-    image = models.ImageField(("Imagen"),upload_to='profile_pics', blank=True)
+    image = models.ImageField(("Imagen"), upload_to='profile_pics', blank=True)
     is_active = models.BooleanField(("está activo"),default=True)
     is_staff = models.BooleanField(("es trabajador"),default=False)
     es_vendedor = models.BooleanField(("es vendedor"),default=False)
