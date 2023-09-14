@@ -29,14 +29,6 @@ def logout_view(request):
     return redirect('login')  # Redirige a la página de inicio de sesión después del logout
 
 
-from django.contrib.auth.hashers import make_password
-from django.shortcuts import render, redirect
-from .forms import PerfilForm  # Asegúrate de importar tu formulario
-
-from django.contrib.auth.hashers import make_password
-from django.shortcuts import render, redirect
-from .forms import PerfilForm  # Asegúrate de importar tu formulario
-
 def registro_view(request):
     if request.method == 'POST':
         # Procesa el formulario de registro
@@ -77,6 +69,7 @@ def dashboard_view(request):
     # Obtener todos los usuarios
     users = Usuario.objects.all()
     return render(request, 'dashboard.html', {'users': users})
+
 
 def configperfil_view(request):
     if not request.user.is_authenticated:
