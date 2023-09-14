@@ -71,14 +71,17 @@ def dashboard_view(request):
     users = Usuario.objects.all()
     return render(request, 'dashboard.html', {'users': users})
 
+
 def dashboard_datos(request):
-    # Obtener todos los objetos de la tabla Usuario
+    filtro = request.GET.get('filtro', None)
     users = Usuario.objects.all()
 
-    # Crear una lista vacía para almacenar los datos de los usuarios
+    # Filtrar los usuarios si se proporciona un filtro
+    if filtro:
+        users = users.filter(user_name__icontains=filtro)
+
     users_data = []
 
-    # Recorrer todos los objetos de Usuario y agregar sus datos a la lista
     for user in users:
         datos_de_usuario = {
             "user_name": user.user_name,
@@ -95,8 +98,8 @@ def dashboard_datos(request):
         }
         users_data.append(datos_de_usuario)
 
-    # Devolver la lista de diccionarios como una respuesta JSON
     return JsonResponse(users_data, safe=False)
+
 
 def configperfil_view(request):
     if not request.user.is_authenticated:
