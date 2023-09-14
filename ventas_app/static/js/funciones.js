@@ -11,6 +11,7 @@ $(function () {
 // ------------------------------------------------------------------------------------------------------------
 
 $(document).ready(function() {
+    
     var table = $('#datatablesSimple').DataTable({
         orderCellsTop: true,
         fixedHeader: true
