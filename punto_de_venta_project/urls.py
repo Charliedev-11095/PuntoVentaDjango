@@ -17,7 +17,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('logout/', views.logout_view, name='logout'),
     path('error404/',views.error404_view, name='error'),
-    path('editarImagen/',views.ImagenPerfil_view, name='imagenPerfil')
+    path('editarImagen/',views.ImagenPerfil_view, name='imagenPerfil'),
+    path('lista_usuarios/', views.dashboard_datos, name='lista_usuarios'),
 
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

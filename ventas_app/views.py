@@ -8,6 +8,7 @@ from ventas_app.models import Usuario
 from .forms import PerfilForm
 from .forms import ProfileImageForm
 from django.contrib.auth.hashers import make_password
+from django.http import JsonResponse
 
 
 def login_view(request):
@@ -70,6 +71,32 @@ def dashboard_view(request):
     users = Usuario.objects.all()
     return render(request, 'dashboard.html', {'users': users})
 
+def dashboard_datos(request):
+    # Obtener todos los objetos de la tabla Usuario
+    users = Usuario.objects.all()
+
+    # Crear una lista vacía para almacenar los datos de los usuarios
+    users_data = []
+
+    # Recorrer todos los objetos de Usuario y agregar sus datos a la lista
+    for user in users:
+        datos_de_usuario = {
+            "user_name": user.user_name,
+            "nombre": user.nombre,
+            "apellido_paterno": user.apellido_paterno,
+            "apellido_materno": user.apellido_materno,
+            "gender": user.gender,
+            "birth_date": user.birth_date,
+            "email": user.email,
+            "phone": user.phone,
+            "is_staff": user.is_staff,
+            "es_vendedor": user.es_vendedor,
+            "is_active": user.is_active
+        }
+        users_data.append(datos_de_usuario)
+
+    # Devolver la lista de diccionarios como una respuesta JSON
+    return JsonResponse(users_data, safe=False)
 
 def configperfil_view(request):
     if not request.user.is_authenticated:
