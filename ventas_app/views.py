@@ -73,6 +73,8 @@ def dashboard_view(request):
 
 
 def dashboard_datos(request):
+    if not request.user.is_authenticated:
+        return redirect('error')
     print(request)
     usuarios = list(Usuario.objects.all().values())
     datos = {'usuarios': usuarios}
