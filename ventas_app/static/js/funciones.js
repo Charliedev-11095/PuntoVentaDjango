@@ -55,18 +55,18 @@ const listUsuarios = async () => {
             : '<div class="badge bg-danger text-white rounded-pill">Inactivo</div>';
             content += `
             <tr>
-                <td>${index+1}</td>
-                <td>${usuario.user_name}</td>
-                <td>${usuario.nombre}</td>
-                <td>${usuario.apellido_paterno}</td>
-                <td>${usuario.apellido_materno}</td>
-                <td>${usuario.gender}</td>
-                <td>${usuario.birth_date}</td>
-                <td>${usuario.email}</td>
-                <td>${usuario.phone}</td>
-                <td>${rolTexto}</td>
-                <td>${estadoTexto}</td>
-                <td><a href="/configperfil/"><i class="fas fa-edit"></i></a> | <a href="/seguridad/"><i class="fas fa-trash-alt"></i></a></td>
+                <td class="centered">${index+1}</td>
+                <td class="centered">${usuario.user_name}</td>
+                <td class="centered">${usuario.nombre}</td>
+                <td class="centered">${usuario.apellido_paterno}</td>
+                <td class="centered">${usuario.apellido_materno}</td>
+                <td class="centered">${usuario.gender}</td>
+                <td class="centered">${usuario.birth_date}</td>
+                <td class="centered">${usuario.email}</td>
+                <td class="centered">${usuario.phone}</td>
+                <td class="centered">${rolTexto}</td>
+                <td class="centered">${estadoTexto}</td>
+                <td class="centered"><a href="/configperfil/"><i class="fas fa-edit"></i></a> | <a href="/seguridad/"><i class="fas fa-trash-alt"></i></a></td>
 
                 
             `;
