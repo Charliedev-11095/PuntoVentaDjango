@@ -39,6 +39,19 @@ const listUsuarios = async () => {
         const datos = await response.json();
         let content = '';
          datos.usuarios.forEach((usuario,index) => {
+            
+            let rolTexto = '';
+            if (usuario.is_staff) {
+                rolTexto = 'Administrador';
+            } else if (usuario.es_vendedor) {
+                rolTexto = 'Vendedor';
+            } else {
+                rolTexto = 'Otro Rol';
+            }
+            
+            let estadoTexto = usuario.is_active
+            ? '<div class="badge bg-success text-white rounded-pill">Activo</div>'
+            : '<div class="badge bg-danger text-white rounded-pill">Inactivo</div>';
             content += `
             <tr>
                 <td>${index+1}</td>
@@ -50,8 +63,9 @@ const listUsuarios = async () => {
                 <td>${usuario.birth_date}</td>
                 <td>${usuario.email}</td>
                 <td>${usuario.phone}</td>
-                <td>${usuario.is_staff}</td>
-                <td>${usuario.es_vendedor}</td>
+                <td>${rolTexto}</td>
+                <td>${estadoTexto}</td>
+                <td><a href="/configperfil/"><i class="fas fa-edit"></i></a> | <a href="/seguridad/"><i class="fas fa-trash-alt"></i></a></td>
 
                 
             `;
@@ -59,7 +73,6 @@ const listUsuarios = async () => {
         });
         tableBody_usuarios.innerHTML = content;  
     }catch(ex){
-        alert(ex);
     }
 };
 window.addEventListener('load', async() => {
