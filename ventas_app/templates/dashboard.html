@@ -59,7 +59,7 @@
             
             <div class="card-body">
                 <div class="table-responsive">
-                <table id="datatablesSimple" class="display" style="font-size: smaller">
+                <table id="tableUsuarios" class="display" style="font-size: smaller">
                     <thead>
                         <tr>
                             <th >Nickname</th>
@@ -75,48 +75,8 @@
                             <th>Acción</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        {% for user in users %}
-                        <tr>
-                            <td>{{ user.user_name }}</td>
-                            <td>{{ user.nombre }}</td>
-                            <td>{{ user.apellido_paterno }}</td>
-                            <td>{{ user.apellido_materno }}</td>
-                            <td>{{ user.gender }}</td>
-                            <td>{{ user.birth_date }}</td>
-                            <td>{{ user.email }}</td>
-                            <td>{{ user.phone }}</td>
-                            <td>
-                                {% if user.is_staff %}
-                                Administrador
-                                {% elif user.es_vendedor %}
-                                Vendedor
-                                {% else %}
-                                Otro Rol
-                                {% endif %}
-                            </td>
-                            <td>
-                                <div
-                                    class="badge {% if user.is_active %}bg-success{% else %}bg-danger{% endif%} text-white rounded-pill">
-                                    {% if user.is_active %}
-                                    Activo
-                                    {% else %}
-                                    Inactivo
-                                    {% endif %}
-                                </div>
-                            </td>
-                            <td>
-                                <a href="{%url 'configperfil'%}"
-                                    class="btn btn-datatable btn-icon btn-transparent-dark">
-                                    <i class="fas fa-edit fa-lg"></i>
-                                </a>
-                                <a href="{%url 'seguridad'%}#EliminarCuenta"
-                                    class="btn btn-datatable btn-icon btn-transparent-dark">
-                                    <i class="fas fa-trash-alt"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        {% endfor %}
+                    <tbody id = "tableBody_usuarios">
+                       
                     </tbody>
                 </table>
                 </div>

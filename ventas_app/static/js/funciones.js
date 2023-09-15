@@ -10,49 +10,58 @@ $(function () {
 
 // ------------------------------------------------------------------------------------------------------------
 
-$(document).ready(function() {
-    
-    var table = $('#datatablesSimple').DataTable({
-        orderCellsTop: true,
-        fixedHeader: true
-    });
+let dataTable;
+let dataTableIsInitialized = false;
 
-    // Creamos una fila en el head de la tabla y lo clonamos para cada columna
-    $('#datatablesSimple thead tr').clone(false).appendTo('#datatablesSimple thead');
-    
-    $('#datatablesSimple thead tr:eq(1) th').each(function(i) {
-        var title = $(this).text(); // es el nombre de la columna
-        $(this).html('<input type="text" placeholder="Buscar Por ' + title + '" />');
-        
+const DataTableOptions = {
+    columDefs: [
+        {className: 'centered', targets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ]},
+        {orderable: false, targets: [9, 10, 11]},
+        {searchable: false, targets: [1,2,3,4,5,6,7,8,9,10]},
+    ],
+    pageLength: 4,
+    destroy: true,
+};
 
-        $('input', this).on('keyup change', function() {
-            if (table.column(i).search() !== this.value) {
-                table
-                    .column(i)
-                    .search(this.value)
-                    .draw();
-                
-                // Realiza una solicitud AJAX para obtener los datos filtrados
-                obtenerDatosFiltrados(this.value);
-            }
-        });
-    });
-
-    // Función para realizar la solicitud AJAX
-    function obtenerDatosFiltrados(filtro) {
-        $.ajax({
-            url: '/lista_usuarios/', // Reemplaza esto con la URL correcta a tu vista
-            method: 'GET',
-            data: {filtro: filtro}, // Envia el valor del filtro al servidor
-            dataType: 'json',
-            success: function(data) {
-                // Manipula los datos recibidos aquí y actualiza la tabla o el array de datos
-                console.log(data); // Muestra los datos en la consola para depuración
-            },
-            error: function(error) {
-                console.error('Error al obtener datos:', error);
-            }
-        });
+const initDataTable = async () => {
+    if(dataTableIsInitialized){
+        dataTable.destroy();
     }
-});
+    await listUsuarios();
+  
+    dataTable = $('#tableUsuarios').DataTable({});
+    dataTableIsInitialized = true;
+};
 
+const listUsuarios = async () => {
+    try{
+        const response = await fetch('/lista_usuarios/');
+        const datos = await response.json();
+        let content = '';
+         datos.usuarios.forEach((usuario,index) => {
+            content += `
+            <tr>
+                <td>${index+1}</td>
+                <td>${usuario.user_name}</td>
+                <td>${usuario.nombre}</td>
+                <td>${usuario.apellido_paterno}</td>
+                <td>${usuario.apellido_materno}</td>
+                <td>${usuario.gender}</td>
+                <td>${usuario.birth_date}</td>
+                <td>${usuario.email}</td>
+                <td>${usuario.phone}</td>
+                <td>${usuario.is_staff}</td>
+                <td>${usuario.es_vendedor}</td>
+
+                
+            `;
+            
+        });
+        tableBody_usuarios.innerHTML = content;  
+    }catch(ex){
+        alert(ex);
+    }
+};
+window.addEventListener('load', async() => {
+await initDataTable();
+});

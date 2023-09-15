@@ -73,32 +73,10 @@ def dashboard_view(request):
 
 
 def dashboard_datos(request):
-    filtro = request.GET.get('filtro', None)
-    users = Usuario.objects.all()
-
-    # Filtrar los usuarios si se proporciona un filtro
-    if filtro:
-        users = users.filter(user_name__icontains=filtro)
-
-    users_data = []
-
-    for user in users:
-        datos_de_usuario = {
-            "user_name": user.user_name,
-            "nombre": user.nombre,
-            "apellido_paterno": user.apellido_paterno,
-            "apellido_materno": user.apellido_materno,
-            "gender": user.gender,
-            "birth_date": user.birth_date,
-            "email": user.email,
-            "phone": user.phone,
-            "is_staff": user.is_staff,
-            "es_vendedor": user.es_vendedor,
-            "is_active": user.is_active
-        }
-        users_data.append(datos_de_usuario)
-
-    return JsonResponse(users_data, safe=False)
+    print(request)
+    usuarios = list(Usuario.objects.all().values())
+    datos = {'usuarios': usuarios}
+    return JsonResponse(datos)
 
 
 def configperfil_view(request):

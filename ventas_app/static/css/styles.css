@@ -19618,3 +19618,8 @@ pre[class*=language-] {
 .token.variable {
   color: #ff6666;
 }
+
+.centered {
+  text-align: center;
+  vertical-align: middle;
+}
