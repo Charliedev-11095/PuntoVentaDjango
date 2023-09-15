@@ -28,8 +28,26 @@ const initDataTable = async () => {
         dataTable.destroy();
     }
     await listUsuarios();
-  
-    dataTable = $('#tableUsuarios').DataTable({});
+
+    // Combina el código de DataTables con la creación de columnas de búsqueda
+    $('#tableUsuarios thead tr').clone(true).appendTo( '#tableUsuarios thead' );
+
+    $('#tableUsuarios thead tr:eq(1) th').each( function (i) {
+        var title = $(this).text(); //es el nombre de la columna
+        $(this).html( '<input type="text" placeholder="Search...'+title+'" />' );
+
+        $( 'input', this ).on( 'keyup change', function () {
+            if ( dataTable.column(i).search() !== this.value ) {
+                dataTable
+                    .column(i)
+                    .search( this.value )
+                    .draw();
+            }
+        });
+    });
+
+    // Inicializa el DataTable después de configurar las columnas de búsqueda
+    dataTable = $('#tableUsuarios').DataTable(DataTableOptions);
     dataTableIsInitialized = true;
 };
 
@@ -66,16 +84,15 @@ const listUsuarios = async () => {
                 <td class="centered">${usuario.phone}</td>
                 <td class="centered">${rolTexto}</td>
                 <td class="centered">${estadoTexto}</td>
-                <td class="centered"><a href="/configperfil/"><i class="fas fa-edit"></i></a> | <a href="/seguridad/"><i class="fas fa-trash-alt"></i></a></td>
-
-                
+                <td class="centered"><a href="/configperfil/"><i class="fas fa-edit"></i> editar</a> | <a href="/seguridad/"><i class="fas fa-trash-alt"></i> eliminar</a></td>
+            </tr>
             `;
-            
         });
         tableBody_usuarios.innerHTML = content;  
     }catch(ex){
     }
 };
+
 window.addEventListener('load', async() => {
-await initDataTable();
+    await initDataTable();
 });
