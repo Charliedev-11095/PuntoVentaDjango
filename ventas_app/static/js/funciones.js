@@ -37,6 +37,7 @@ const listUsuarios = async () => {
     try{
         const response = await fetch('/lista_usuarios/');
         const datos = await response.json();
+        console.log(datos);
         let content = '';
          datos.usuarios.forEach((usuario,index) => {
             
