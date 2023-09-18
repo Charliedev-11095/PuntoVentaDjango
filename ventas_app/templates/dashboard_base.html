@@ -41,12 +41,7 @@
         <button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 me-2 ms-lg-2 me-lg-0" id="sidebarToggle"><i
                 data-feather="menu"></i></button>
         <!-- Navbar Brand-->
-        <!-- * * Tip * * You can use text or an image for your navbar brand.-->
-        <!-- * * * * * * When using an image, we recommend the SVG format.-->
-        <!-- * * * * * * Dimensions: Maximum height: 32px, maximum width: 240px-->
         <a class="navbar-brand pe-3 ps-4 ps-lg-2" href="{%url 'dashboard'%}">Admin Pro</a>
-        <!-- Navbar Search Input-->
-        <!-- * * Note: * * Visible only on and above the lg breakpoint-->
         <form class="form-inline me-auto d-none d-lg-block me-3">
             <div class="input-group input-group-joined input-group-solid">
                 <input class="form-control pe-0" type="search" placeholder="Search" aria-label="Search" />
@@ -92,7 +87,6 @@
                 </div>
             </li>
             <!-- Navbar Search Dropdown-->
-            <!-- * * Note: * * Visible only below the lg breakpoint-->
             <li class="nav-item dropdown no-caret me-3 d-lg-none">
                 <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="searchDropdown" href="#" role="button"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
@@ -285,18 +279,12 @@
             <nav class="sidenav shadow-right sidenav-light">
                 <div class="sidenav-menu">
                     <div class="nav accordion" id="accordionSidenav">
-                        <!-- Sidenav Menu Heading (Account)-->
-                        <!-- * * Note: * * Visible only on and above the sm breakpoint-->
                         <div class="sidenav-menu-heading d-sm-none">Account</div>
-                        <!-- Sidenav Link (Alerts)-->
-                        <!-- * * Note: * * Visible only on and above the sm breakpoint-->
                         <a class="nav-link d-sm-none" href="#!">
                             <div class="nav-link-icon"><i data-feather="bell"></i></div>
                             Alerts
                             <span class="badge bg-warning-soft text-warning ms-auto">4 New!</span>
                         </a>
-                        <!-- Sidenav Link (Messages)-->
-                        <!-- * * Note: * * Visible only on and above the sm breakpoint-->
                         <a class="nav-link d-sm-none" href="#!">
                             <div class="nav-link-icon"><i data-feather="mail"></i></div>
                             Messages
@@ -318,8 +306,6 @@
                                     Inicio
                                     <span class="badge bg-primary-soft text-primary ms-auto">Updated</span>
                                 </a>
-                                <!-- <a class="nav-link" href="dashboard-2.html">Multipurpose</a>
-                                    <a class="nav-link" href="dashboard-3.html">Affiliate</a> -->
                             </nav>
                         </div>
                         <!-- Sidenav Heading (Custom)-->
@@ -333,52 +319,15 @@
                         </a>
                         <div class="collapse" id="collapsePages" data-bs-parent="#accordionSidenav">
                             <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPagesMenu">
-                                <!-- Nested Sidenav Accordion (Pages -> Account)-->
-                                <!-- <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAccount" aria-expanded="false" aria-controls="pagesCollapseAccount">
-                                        Cuenta
-                                        <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                    </a> -->
-                                <!-- <div class="collapse" id="pagesCollapseAccount" data-bs-parent="#accordionSidenavPagesMenu">
-                                        <nav class="sidenav-menu-nested nav">
-                                            <a class="nav-link" href="{%url 'configperfil'%}">Perfil</a>
-                                            <a class="nav-link" href="{%url 'seguridad'%}">Seguridad</a>
-                                            <a class="nav-link" href="{%url 'pago'%}">Forma de pago</a>
-                                        </nav>
-                                    </div> -->
                                 <!-- Nested Sidenav Accordion (Pages -> Authentication)-->
-                                <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse"
-                                    data-bs-target="#pagesCollapseAuth" aria-expanded="false"
-                                    aria-controls="pagesCollapseAuth">
+                                <a class="nav-link collapsed" href="{% url 'marcas' %}">
                                     Marcas
-                                    <!-- <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div> -->
                                 </a>
+
                                 <div class="collapse" id="pagesCollapseAuth"
                                     data-bs-parent="#accordionSidenavPagesMenu">
                                     <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPagesAuth">
                                         <!-- Nested Sidenav Accordion (Pages -> Authentication -> Basic)-->
-                                        <!-- <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuthBasic" aria-expanded="false" aria-controls="pagesCollapseAuthBasic">
-                                                Basic
-                                                <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                            </a> -->
-                                        <!-- <div class="collapse" id="pagesCollapseAuthBasic" data-bs-parent="#accordionSidenavPagesAuth">
-                                                <nav class="sidenav-menu-nested nav">
-                                                    <a class="nav-link" href="auth-login-basic.html">Login</a>
-                                                    <a class="nav-link" href="auth-register-basic.html">Register</a>
-                                                    <a class="nav-link" href="auth-password-basic.html">Forgot Password</a>
-                                                </nav>
-                                            </div> -->
-                                        <!-- Nested Sidenav Accordion (Pages -> Authentication -> Social)-->
-                                        <!-- <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuthSocial" aria-expanded="false" aria-controls="pagesCollapseAuthSocial">
-                                                Social
-                                                <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div> -->
-                                        <!-- </a>
-                                            <div class="collapse" id="pagesCollapseAuthSocial" data-bs-parent="#accordionSidenavPagesAuth">
-                                                <nav class="sidenav-menu-nested nav">
-                                                    <a class="nav-link" href="auth-login-social.html">Login</a>
-                                                    <a class="nav-link" href="auth-register-social.html">Register</a>
-                                                    <a class="nav-link" href="auth-password-social.html">Forgot Password</a>
-                                                </nav>
-                                            </div> -->
                                     </nav>
                                 </div>
                                 <!-- Nested Sidenav Accordion (Pages -> Error)-->
@@ -386,22 +335,8 @@
                                     data-bs-target="#pagesCollapseError" aria-expanded="false"
                                     aria-controls="pagesCollapseError">
                                     Clientes
-                                    <!-- <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div> -->
                                 </a>
-                                <!-- <div class="collapse" id="pagesCollapseError" data-bs-parent="#accordionSidenavPagesMenu">
-                                        <nav class="sidenav-menu-nested nav">
-                                            <a class="nav-link" href="error-400.html">400 Error</a>
-                                            <a class="nav-link" href="error-401.html">401 Error</a>
-                                            <a class="nav-link" href="error-403.html">403 Error</a>
-                                            <a class="nav-link" href="error-404-1.html">404 Error 1</a>
-                                            <a class="nav-link" href="error-404-2.html">404 Error 2</a>
-                                            <a class="nav-link" href="error-500.html">500 Error</a>
-                                            <a class="nav-link" href="error-503.html">503 Error</a>
-                                            <a class="nav-link" href="error-504.html">504 Error</a>
-                                        </nav>
-                                    </div> -->
                                 <a class="nav-link" href="pricing.html">Cajas</a>
-                                <!--  <a class="nav-link" href="invoice.html">Invoice</a> -->
                             </nav>
                         </div>
                         <!-- Sidenav Accordion (Applications)-->
@@ -655,7 +590,7 @@
     </div>
     </script>
     <script src="{% static 'js/cdn.datatables.net_1.10.20_js_jquery.dataTables.min.js'%}"></script>
-<script src="https://cdn.datatables.net/fixedheader/3.1.6/js/dataTables.fixedHeader.min.js"></script> 
+    <script src="https://cdn.datatables.net/fixedheader/3.1.6/js/dataTables.fixedHeader.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
     <script src="{% static 'js/scripts.js'%}"></script>
@@ -667,7 +602,7 @@
     <sb-customizer project="sb-admin-pro"></sb-customizer>
     <!-- <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8b253dfea2ab4077af8c6f58422dfbfd1689876627854" integrity="sha512-bjgnUKX4azu3dLTVtie9u6TKqgx29RBwfj3QXYt5EKfWM/9hPSAI/4qcV5NACjwAo8UtTeWefx6Zq5PHcMm7Tg==" data-cf-beacon='{"rayId":"7ee5b152ac77274e","version":"2023.7.0","b":1,"token":"6e2c2575ac8f44ed824cef7899ba8463","si":100}' crossorigin="anonymous"></script> -->
     <script>
-       
+
     </script>
 </body>
 

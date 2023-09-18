@@ -153,3 +153,8 @@ def eliminar_usuario(request, usuario_id):
 
 def error404_view(request):
     return render(request, 'error-404.html', {})
+
+def marcas_view(request):
+    if not request.user.is_authenticated:
+        return redirect('error')
+    return render(request, 'marcas/marcas.html', {})

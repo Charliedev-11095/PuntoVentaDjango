@@ -18,7 +18,7 @@ color: white;
                         <div class="page-header-icon"><i data-feather="activity"></i></div>
                         Panel de Control
                     </h1>
-                    <div class="page-header-subtitle">Panel de configuración</div>
+                    <div class="page-header-subtitle">Marcas</div>
                 </div>
                 <div class="col-12 col-xl-auto mt-4">
                     <div class="input-group input-group-joined border-0" style="width: 16.5rem">
@@ -42,11 +42,8 @@ color: white;
                     <div class="row align-items-center">
                         <div class="col-xl-8 col-xxl-12">
                             <div class="text-center text-xl-start text-xxl-center mb-4 mb-xl-0 mb-xxl-4">
-                                <h1 class="text-primary">Bienvenid@ al Panel de Control {{user.user_name}}!</h1>
-                                <p class="text-gray-700 mb-0">¡Explore nuestro kit de herramientas de interfaz de
-                                    usuario totalmente diseñado! ¡Explore nuestras páginas, componentes y utilidades de
-                                    aplicaciones previas a la construcción, y asegúrese de ver nuestra documentación
-                                    completa!</p>
+                                <h1 class="text-primary">Control de marcas</h1>
+                                <p class="text-gray-700 mb-0">En este apartado podrás ver los datos relacionados con las marcas agregadas</p>
                             </div>
                         </div>
                         <div class="col-xl-4 col-xxl-12 text-center"><img class="img-fluid"
@@ -58,10 +55,11 @@ color: white;
         </div>
         {%endblock%}
 
+
         {% block tabla %}
 
         <div class="card mb-4">
-            <div class="card-header">Gestión de personal</div>
+            <div class="card-header">Gestión de Marcas</div>
             
             <div class="card-body">
                 <div class="table-responsive">
@@ -69,17 +67,18 @@ color: white;
                     <thead>
                         <tr>
                             <th class="centered">#</th>
-                            <th class="centered" >Nickname</th>
-                            <th class="centered">Nombre(s)</th>
-                            <th class="centered">Apellido Paterno</th>
-                            <th class="centered">Apellido Materno</th>
-                            <th class="centered">Género</th>
-                            <th class="centered">Fecha de Nacimiento</th>
-                            <th class="centered">Correo</th>
-                            <th class="centered">Teléfono</th>
-                            <th class="centered">Rol</th>
-                            <th class="centered">Estado</th>
-                            <th class="centered">Acción</th>
+                            <th class="centered" >Nombre de la marca</th>
+                            <th class="centered">Descripcion</th>
+                            <th class="centered">Stock</th>
+                            <th class="centered">Bodega</th>
+                            <th class="centered">Lote</th>
+                            <th class="centered">Categoria</th>
+                            <th class="centered">Origen</th>
+                            <th class="centered">Material</th>
+                            <th class="centered">Observacion</th>
+                            <th class="centered">Fecha ingreso</th>
+                            <th class="centered">Fecha venta</th>
+                            <th class="centered">Precio</th>
                         </tr>
                     </thead>
                     <tbody id = "tableBody_usuarios">
