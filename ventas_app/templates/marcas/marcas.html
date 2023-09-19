@@ -5,7 +5,7 @@
 <title>{% block title %}Dashboard{% endblock %}</title>
 <style>
     table th {
-background-color:#272727;
+background-color:#787a7e;
 color: white;   
 }
 </style>
@@ -60,33 +60,32 @@ color: white;
 
         <div class="card mb-4">
             <div class="card-header">Gestión de Marcas</div>
-            
             <div class="card-body">
                 <div class="table-responsive">
-                <table id="tableUsuarios" class="display" style="font-size: smaller">
-                    <thead>
-                        <tr>
-                            <th class="centered">#</th>
-                            <th class="centered" >Nombre de la marca</th>
-                            <th class="centered">Descripcion</th>
-                            <th class="centered">Stock</th>
-                            <th class="centered">Bodega</th>
-                            <th class="centered">Lote</th>
-                            <th class="centered">Categoria</th>
-                            <th class="centered">Origen</th>
-                            <th class="centered">Material</th>
-                            <th class="centered">Observacion</th>
-                            <th class="centered">Fecha ingreso</th>
-                            <th class="centered">Fecha venta</th>
-                            <th class="centered">Precio</th>
-                        </tr>
-                    </thead>
-                    <tbody id = "tableBody_usuarios">
-                       
-                    </tbody>
-                </table>
+                    <table id="tableMarcas" class="display" style="font-size: smaller">
+                        <thead>
+                            <tr>
+                                <th class="centered">#</th>
+                                <th class="centered" >Nombre de la marca</th>
+                                <th class="centered">Descripcion</th>
+                                <th class="centered">Stock</th>
+                                <th class="centered">Bodega</th>
+                                <th class="centered">Lote</th>
+                                <th class="centered">Categoria</th>
+                                <th class="centered">Origen</th>
+                                <th class="centered">Material</th>
+                                <th class="centered">Observacion</th>
+                                <th class="centered">Fecha ingreso</th>
+                                <th class="centered">Fecha venta</th>
+                                <th class="centered">Precio</th>
+                                <th class="centered">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id = "tableBody_marcas">
+                           
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
-
         {% endblock %}

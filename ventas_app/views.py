@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate, login
 from django.urls import reverse
 from django.contrib.auth import logout
 from ventas_app.models import Usuario
+from ventas_app.models import marca
 from .forms import PerfilForm
 from .forms import ProfileImageForm
 from django.contrib.auth.hashers import make_password
@@ -158,3 +159,12 @@ def marcas_view(request):
     if not request.user.is_authenticated:
         return redirect('error')
     return render(request, 'marcas/marcas.html', {})
+
+
+def marcas_datos(request):
+    if not request.user.is_authenticated:
+        return redirect('error')
+    print(request)
+    marcas = list(marca.objects.all().values())
+    datos = {'marcas': marcas}
+    return JsonResponse(datos)

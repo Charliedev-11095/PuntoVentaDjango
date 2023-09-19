@@ -20,5 +20,6 @@ urlpatterns = [
     path('editarImagen/',views.ImagenPerfil_view, name='imagenPerfil'),
     path('lista_usuarios/', views.dashboard_datos, name='lista_usuarios'),
     path('marcas/', views.marcas_view, name='marcas'),
+    path('lista_marcas/', views.marcas_datos, name='marcas_datos'),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

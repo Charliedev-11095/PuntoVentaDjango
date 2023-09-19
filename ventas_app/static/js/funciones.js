@@ -10,49 +10,87 @@ $(function () {
 
 // ------------------------------------------------------------------------------------------------------------
 
-let dataTable;
-let dataTableIsInitialized = false;
+let dataTableUsuarios;
+let dataTableUsuariosIsInitialized = false;
+let dataTableMarcas;
+let dataTableMarcasIsInitialized = false;
 
-const DataTableOptions = {
+const DataTableOptionsUsuarios = {
     columDefs: [
-        {className: 'centered', targets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ]},
-        {orderable: false, targets: [9, 10, 11]},
-        {searchable: false, targets: [1,2,3,4,5,6,7,8,9,10]},
+        // Configuración de columnas para la tabla de usuarios
+        { className: 'centered', targets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] },
+        { orderable: false, targets: [9, 10, 11] },
+        { searchable: false, targets: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] },
     ],
     pageLength: 4,
     destroy: true,
 };
 
-const initDataTable = async () => {
-    if(dataTableIsInitialized){
-        dataTable.destroy();
+const DataTableOptionsMarcas = {
+    columDefs: [
+        // Configuración de columnas para la tabla de marcas
+        { className: 'centered', targets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] },
+        { orderable: false, targets: [9, 10, 11, 12] },
+        { searchable: false, targets: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] },
+    ],
+    pageLength: 4,
+    destroy: true,
+};
+
+const initDataTableUsuarios = async () => {
+    if (dataTableUsuariosIsInitialized) {
+        dataTableUsuarios.destroy();
     }
     await listUsuarios();
 
-    // Combina el código de DataTables con la creación de columnas de búsqueda
-    $('#tableUsuarios thead tr').clone(true).appendTo( '#tableUsuarios thead' );
+    $('#tableUsuarios thead tr').clone(true).appendTo('#tableUsuarios thead');
 
-    $('#tableUsuarios thead tr:eq(1) th').each( function (i) {
-        var title = $(this).text(); //es el nombre de la columna
-        $(this).html( '<input type="text" placeholder="Search...'+title+'" />' );
+    $('#tableUsuarios thead tr:eq(1) th').each(function (i) {
+        var title = $(this).text();
+        $(this).html('<input type="text" placeholder="Buscar...' + title + '" />');
 
-        $( 'input', this ).on( 'keyup change', function () {
-            if ( dataTable.column(i).search() !== this.value ) {
-                dataTable
+        $('input', this).on('keyup change', function () {
+            if (dataTableUsuarios.column(i).search() !== this.value) {
+                dataTableUsuarios
                     .column(i)
-                    .search( this.value )
+                    .search(this.value)
                     .draw();
             }
         });
     });
 
-    // Inicializa el DataTable después de configurar las columnas de búsqueda
-    dataTable = $('#tableUsuarios').DataTable(DataTableOptions);
-    dataTableIsInitialized = true;
+    dataTableUsuarios = $('#tableUsuarios').DataTable(DataTableOptionsUsuarios);
+    dataTableUsuariosIsInitialized = true;
+};
+
+const initDataTableMarcas = async () => {
+    if (dataTableMarcasIsInitialized) {
+        dataTableMarcas.destroy();
+    }
+    await listMarcas();
+
+    $('#tableMarcas thead tr').clone(true).appendTo('#tableMarcas thead');
+
+    $('#tableMarcas thead tr:eq(1) th').each(function (i) {
+        var title = $(this).text();
+        $(this).html('<input type="text" placeholder="Buscar...' + title + '" />');
+
+        $('input', this).on('keyup change', function () {
+            if (dataTableMarcas.column(i).search() !== this.value) {
+                dataTableMarcas
+                    .column(i)
+                    .search(this.value)
+                    .draw();
+            }
+        });
+    });
+
+    dataTableMarcas = $('#tableMarcas').DataTable(DataTableOptionsMarcas);
+    dataTableMarcasIsInitialized = true;
 };
 
 const listUsuarios = async () => {
-    try{
+    try {
         const response = await fetch('/lista_usuarios/');
         const datos = await response.json();
         console.log(datos);
@@ -93,6 +131,38 @@ const listUsuarios = async () => {
     }
 };
 
-window.addEventListener('load', async() => {
-    await initDataTable();
+const listMarcas = async () => {
+    try {
+        const response = await fetch('/lista_marcas/');
+        const datos = await response.json();
+        console.log(datos);
+        let content = '';
+         datos.marcas.forEach((marca,index) => {
+            content += `
+            <tr>
+                <td class="centered">${index+1}</td>
+                <td class="centered">${marca.nombre_de_la_marca}</td>
+                <td class="centered">${marca.descripcion}</td>
+                <td class="centered">${marca.stock}</td>
+                <td class="centered">${marca.bodega}</td>
+                <td class="centered">${marca.lote}</td>
+                <td class="centered">${marca.categoria}</td>
+                <td class="centered">${marca.origen}</td>
+                <td class="centered">${marca.material}</td>
+                <td class="centered">${marca.observacion}</td>
+                <td class="centered">${marca.fecha_ingreso}</td>
+                <td class="centered">${marca.fecha_venta}</td>
+                <td class="centered">${marca.precio}</td>
+                <td class="centered"><a href="/configperfil/"><i class="fas fa-edit"></i> editar</a> | <a href="/seguridad/"><i class="fas fa-trash-alt"></i> eliminar</a></td>
+            </tr>
+            `;
+        });
+        tableBody_marcas.innerHTML = content;
+    } catch (ex) {
+    }
+};
+
+window.addEventListener('load', async () => {
+    await initDataTableUsuarios();
+    await initDataTableMarcas();
 });
