@@ -168,3 +168,13 @@ def marcas_datos(request):
     marcas = list(marca.objects.all().values())
     datos = {'marcas': marcas}
     return JsonResponse(datos)
+
+def agregar_marca(request):
+    if not request.user.is_authenticated:
+        return redirect('error')
+    if request.method == 'POST':
+        nombre_de_la_marca = request.POST.get('nombre_de_la_marca')
+        descripcion = request.POST.get('descripcion')
+        marca.objects.create(nombre_de_la_marca=nombre_de_la_marca, descripcion=descripcion)
+        return redirect('marcas')
+    return render(request, 'marcas/agregar_marca.html', {})

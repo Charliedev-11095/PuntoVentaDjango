@@ -67,16 +67,6 @@ class CambioContraseñaForm(forms.Form):
 class marca(models.Model):
     nombre_de_la_marca = models.CharField(max_length=50,null=False)
     descripcion = models.CharField(max_length=50,null=False)
-    stock = models.IntegerField(null=False)
-    bodega = models.CharField(max_length=50,null=False)
-    lote = models.CharField(max_length=50,null=False)
-    categoria = models.CharField(max_length=50,null=False)
-    origen = models.CharField(max_length=50,null=False)
-    material = models.CharField(max_length=50,null=False)
-    observacion = models.CharField(max_length=50,null=False)
-    fecha_ingreso = models.DateField(null=True)
-    fecha_venta = models.DateField(null=True)
-    precio = models.DecimalField(max_digits=5,decimal_places=2,null=False)
     class Meta:
         verbose_name = 'Marca'
         verbose_name_plural = 'Marcas'

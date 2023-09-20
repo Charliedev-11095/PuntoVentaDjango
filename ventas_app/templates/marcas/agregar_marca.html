@@ -3,12 +3,6 @@
 
 {%block header%}
 <title>{% block title %}Marcas{% endblock %}</title>
-<style>
-    table th {
-        background-color: #787a7e;
-        color: white;
-    }
-</style>
 <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
     <div class="container-xl px-4">
         <div class="page-header-content pt-4">
@@ -43,8 +37,7 @@
                         <div class="col-xl-8 col-xxl-12">
                             <div class="text-center text-xl-start text-xxl-center mb-4 mb-xl-0 mb-xxl-4">
                                 <h1 class="text-primary">Control de marcas</h1>
-                                <p class="text-gray-700 mb-0">En este apartado podrás ver los datos relacionados con las
-                                    marcas agregadas</p>
+                                <p class="text-gray-700 mb-0">En este apartado podrás agregar marcas</p>
                             </div>
                         </div>
                         <div class="col-xl-4 col-xxl-12 text-center"><img class="img-fluid"
@@ -54,29 +47,42 @@
                 </div>
             </div>
         </div>
-{%endblock%}
+        {%endblock%}
 
 
-{% block tabla %}
+        {% block tabla %}
 
-<div class="card mb-4">
-            <div class="card-header">Gestión de Marcas</div>
+        <div class="card mb-4">
+            <div class="card-header">Agregar Marcas</div>
             <div class="card-body">
-                <div class="table-responsive">
-                    <table id="tableMarcas" class="display" style="font-size: smaller">
-                        <thead>
-                            <tr>
-                                <th class="centered">#</th>
-                                <th class="centered">Nombre de la marca</th>
-                                <th class="centered">Descripcion</th>
-                                <th class="centered">Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tableBody_marcas">
 
-                        </tbody>
-                    </table>
+                <div class="container-xl px-4 mt-4">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="card">
+
+                                <div class="card-body">
+                                    <form method="POST" action="{% url 'agregar_marca' %}">
+                                        {% csrf_token %}
+                                        <div class="mb-3 ">
+                                            <label for="nombre_de_la_marca" class="form-label">Nombre de la Marca</label>
+                                            <input type="text" class="form-control" id="id_nombre_de_la_marca" name="nombre_de_la_marca" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="descripcion" class="form-label">Descripción</label>
+                                            <textarea class="form-control" id="id_descripcion" name="descripcion"
+                                                rows="3"></textarea>
+                                        </div>
+                                        <br>
+                                        <button type="submit" class="btn btn-primary">Agregar Marca</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
+
             </div>
-</div>
-{% endblock %}
+        </div>
+        {% endblock %}
