@@ -178,3 +178,13 @@ def agregar_marca(request):
         marca.objects.create(nombre_de_la_marca=nombre_de_la_marca, descripcion=descripcion)
         return redirect('marcas')
     return render(request, 'marcas/agregar_marca.html', {})
+
+def editar_marca(request):
+    if not request.user.is_authenticated:
+        return redirect('error')
+    return render(request, 'marcas/editar_marcas.html', {})
+
+def eliminar_marca(request):
+    if not request.user.is_authenticated:
+        return redirect('error')
+    return render(request, 'marcas/eliminar_marcas.html', {})

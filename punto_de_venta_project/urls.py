@@ -22,5 +22,7 @@ urlpatterns = [
     path('marcas/', views.marcas_view, name='marcas'),
     path('lista_marcas/', views.marcas_datos, name='marcas_datos'),
     path('agregar_marca/', views.agregar_marca, name='agregar_marca'),
+    path('editar_marca/', views.editar_marca, name='editar_marca'),
+    path('eliminar_marca/', views.eliminar_marca, name='eliminar_marca'),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

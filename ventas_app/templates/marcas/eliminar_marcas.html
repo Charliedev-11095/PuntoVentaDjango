@@ -52,35 +52,4 @@
 
         {% block tabla %}
 
-        <div class="card mb-4">
-            <div class="card-header">Agregar Marcas</div>
-            <div class="card-body">
-
-                <div class="container-xl px-4 mt-4">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="card">
-
-                                <div class="card-body">
-                                    <form method="POST" action="{% url 'agregar_marca' %}">
-                                        {% csrf_token %}
-                                        <div class="mb-3 ">
-                                            <label for="nombre_de_la_marca" class="form-label">Nombre de la Marca</label>
-                                            <input type="text" class="form-control" id="id_nombre_de_la_marca" name="nombre_de_la_marca" required>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="descripcion" class="form-label">Descripción</label>
-                                            <textarea class="form-control" id="id_descripcion" name="descripcion"
-                                                rows="3"></textarea>
-                                        </div>
-                                        <br>
-                                        <button type="submit" class="btn btn-primary">Agregar Marca</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         {% endblock %}
