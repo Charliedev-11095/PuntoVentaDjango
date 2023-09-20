@@ -143,7 +143,7 @@ const listMarcas = async () => {
                 <td class="centered">${index+1}</td>
                 <td class="centered">${marca.nombre_de_la_marca}</td>
                 <td class="centered">${marca.descripcion}</td>
-                <td class="centered"> <a href="/agregar_marca/"><i class="fas fa-plus"></i> agregar</a> | <a href="/configperfil/"><i class="fas fa-edit"></i> editar</a>  | <a href="/seguridad/"><i class=" fas fa-trash-alt"></i> eliminar</a></td>
+                <td class="centered"> <a href="/agregar_marca/"><i class="fas fa-plus"></i> agregar</a> | <a href="/editar_marca/"><i class="fas fa-edit"></i> editar</a>  |<a href="/eliminar_marca/"><i class=" fas fa-trash-alt"></i> eliminar</a></td>
 
             </tr>
             `;

@@ -65,6 +65,10 @@ def registro_view(request):
 
     return render(request, 'auth-register-basic.html', {'form': form, 'image_form': image_form})
 
+def reset_password_view(request):
+    return render(request, 'auth-reset-password.html', {})
+
+
 def dashboard_view(request):
     if not request.user.is_authenticated:
         return redirect('error')
