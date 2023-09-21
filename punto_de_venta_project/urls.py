@@ -14,7 +14,7 @@ urlpatterns = [
     path('seguridad/', views.seguridad_view, name='seguridad'),
     path('eliminar_usuario/<int:usuario_id>/', views.eliminar_usuario, name='eliminar_usuario'),
     path('registro/', views.registro_view, name='registro'),
-    path('reset_password/', views.reset_password_view, name='reset_password'),  
+    path('reiniciar_contraseña/', views.reiniciar_contraseña_view, name='reiniciar_contraseña'),  
     path('admin/', admin.site.urls),
     path('logout/', views.logout_view, name='logout'),
     path('error404/',views.error404_view, name='error'),

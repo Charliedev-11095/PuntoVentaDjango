@@ -65,7 +65,7 @@ def registro_view(request):
 
     return render(request, 'auth-register-basic.html', {'form': form, 'image_form': image_form})
 
-def reset_password_view(request):
+def reiniciar_contraseña_view(request):
     return render(request, 'auth-reset-password.html', {})
 
 
