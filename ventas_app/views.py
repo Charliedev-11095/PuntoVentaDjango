@@ -33,37 +33,26 @@ def logout_view(request):
 
 def registro_view(request):
     if request.method == 'POST':
-        # Procesa el formulario de registro
         form = PerfilForm(request.POST)
         if form.is_valid():
-            # Obtén las contraseñas del formulario
             password = form.cleaned_data['password']
             password2 = form.cleaned_data['password2']
-
-            # Verifica que las contraseñas coincidan
             if password == password2:
-                # Encripta ambas contraseñas antes de guardarlas
                 hashed_password = make_password(password)
-
-                # Crea una instancia del usuario, establece las contraseñas encriptadas y guarda el usuario
                 usuario = form.save(commit=False)
                 usuario.password = hashed_password
-
-                # Procesa el formulario de la imagen de perfil
                 image_form = ProfileImageForm(request.POST, request.FILES)
                 if image_form.is_valid():
                     usuario.image = image_form.cleaned_data['image']
-
                 usuario.save()
-                return redirect('login')  # Cambiar por la URL a la que se redireccionará después del registro exitoso
+                return redirect('login')
             else:
-                # Si las contraseñas no coinciden, muestra un error en el formulario
                 form.add_error('password2', 'Las contraseñas no coinciden')
     else:
         form = PerfilForm()
         image_form = ProfileImageForm()
-
     return render(request, 'auth-register-basic.html', {'form': form, 'image_form': image_form})
+
 
 def reiniciar_contraseña_view(request):
     return render(request, 'auth-reset-password.html', {})
@@ -89,13 +78,14 @@ def dashboard_datos(request):
 def configperfil_view(request):
     if not request.user.is_authenticated:
         return redirect('error')
-
+        
     if request.method == 'POST':
         form = PerfilForm(request.POST, instance=request.user)
-        if form.has_changed():
-            if form.is_valid():
-                form.save()
-                return redirect('dashboard')
+        print(request.POST)  
+        if form.has_changed() and form.is_valid():  
+            print(form.errors)
+            form.save()
+            return redirect('dashboard')
     else:
         form = PerfilForm(instance=request.user)
     error_messages = []
@@ -126,8 +116,8 @@ def ImagenPerfil_view(request):
 def seguridad_view(request):
     if not request.user.is_authenticated:
         return redirect('error')
-    error_message = None  # Mensaje de error por defecto
-    success_message = None  # Mensaje de éxito por defecto
+    error_message = None
+    success_message = None
     if request.method == 'POST':
         current_password = request.POST.get('currentPassword')
         new_password = request.POST.get('newPassword')
@@ -141,8 +131,8 @@ def seguridad_view(request):
                 error_message = 'La nueva contraseña y la confirmación no coinciden.'
         else:
             error_message = 'La contraseña actual es incorrecta.'
-    
     return render(request, 'account-security.html', {'error_message': error_message, 'success_message': success_message})
+
 
 def pago_view(request):
     if not request.user.is_authenticated:
@@ -159,6 +149,7 @@ def eliminar_usuario(request, usuario_id):
 def error404_view(request):
     return render(request, 'error-404.html', {})
 
+
 def marcas_view(request):
     if not request.user.is_authenticated:
         return redirect('error')
@@ -173,6 +164,7 @@ def marcas_datos(request):
     datos = {'marcas': marcas}
     return JsonResponse(datos)
 
+
 def agregar_marca(request):
     if not request.user.is_authenticated:
         return redirect('error')
@@ -183,10 +175,12 @@ def agregar_marca(request):
         return redirect('marcas')
     return render(request, 'marcas/agregar_marca.html', {})
 
+
 def editar_marca(request):
     if not request.user.is_authenticated:
         return redirect('error')
     return render(request, 'marcas/editar_marcas.html', {})
+
 
 def eliminar_marca(request):
     if not request.user.is_authenticated:

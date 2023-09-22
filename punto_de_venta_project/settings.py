@@ -69,10 +69,15 @@ WSGI_APPLICATION = 'punto_de_venta_project.wsgi.application'
 
 DATABASES = {
     'default': {
-         'ENGINE': 'django.db.backends.sqlite3',
-         'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'punto_venta_django',
+        'USER': 'carlos',
+        'PASSWORD': 'c4rl05.11095',
+        'HOST': 'localhost',  # Puedes cambiar esto según la ubicación de tu servidor MySQL
+        'PORT': '3306',       # El puerto predeterminado de MySQL es 3306
+    }
 }
-}
+
 
 
 # Password validation
