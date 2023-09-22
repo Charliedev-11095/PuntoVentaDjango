@@ -9,13 +9,12 @@ class RegistroForm(forms.ModelForm):
 
 
 class PerfilForm(forms.ModelForm):
-    profile_picture = forms.ImageField(label='Foto de perfil', required=False)
+    # profile_picture = forms.ImageField(label='Foto de perfil', required=False)
 
     class Meta:
         model = Usuario
-        # fields = ['user_name','email','nombre', 'apellido_paterno', 'apellido_materno', 'gender', 'phone', 'birth_date','image','is_staff', 'es_vendedor']
-        exclude = ['password1', 'password2']
-    
+        fields = ['user_name','email','nombre', 'apellido_paterno', 'apellido_materno', 'gender', 'phone', 'birth_date','image','is_staff', 'es_vendedor']
+      
     def __init__(self, *args, **kwargs):
         super(PerfilForm, self).__init__(*args, **kwargs)
         self.fields['user_name'].widget.attrs.update({'class': 'form-control'})

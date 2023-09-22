@@ -25,5 +25,6 @@ urlpatterns = [
     path('agregar_marca/', views.agregar_marca, name='agregar_marca'),
     path('editar_marca/', views.editar_marca, name='editar_marca'),
     path('eliminar_marca/', views.eliminar_marca, name='eliminar_marca'),
+    path('clientes/', views.clientes_view, name='clientes'),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

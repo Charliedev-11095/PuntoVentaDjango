@@ -59,6 +59,7 @@
           <div class="card-body">
             <form method="post"action="{% url 'configperfil' %}">
               {% csrf_token %}
+              {{form.as_p}}
               {% if error_messages %}
               <div class="alert alert-danger">
                 <ul>
@@ -68,89 +69,6 @@
                 </ul>
               </div>
               {% endif %}
-              <div class="row">
-                <div class="col-md-6 col-sm-6">
-                  <label for="id_user_name">Nombre de usuario:</label>
-                  <input type="text" name="user_name" value="{{user.user_name}}" maxlength="30" class="form-control"
-                    id="id_user_name">
-                </div>
-
-                <div class="col-md-6 col-sm-6">
-                  <label for="id_nombre">Nombre de pila:</label>
-                  <input type="text" name="nombre" value="{{user.nombre}}" maxlength="30" class="form-control"
-                    id="id_nombre">
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col-md-6 col-sm-6">
-                  <label for="id_apellido_paterno">Apellido paterno:</label>
-                  <input type="text" name="apellido_paterno" value="{{user.apellido_paterno}}" maxlength="30"
-                    class="form-control" id="id_apellido_paterno">
-                </div>
-
-                <div class="col-md-6 col-sm-6">
-                  <label for="id_apellido_materno">Apellido materno:</label>
-                  <input type="text" name="apellido_materno" value="{{user.apellido_materno}}" maxlength="30"
-                    class="form-control" id="id_apellido_materno">
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col-md-6 col-sm-6">
-                  <label for="id_email">Correo electrónico:</label>
-                  <input type="email" name="email" value="{{user.email}}" class="form-control" maxlength="320"
-                    id="id_email">
-                </div>
-
-                <div class="col-md-6 col-sm-6">
-                  <label for="id_gender">Género:</label>
-                  <select name="gender" class="form-control" id="id_gender">
-                    <option value="">---------</option>
-                    <option value="masculino">Masculino</option>
-                    <option value="femenino">Femenino</option>
-                    <option value="otro">Otro</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col-md-6 col-sm-6">
-                  <label for="id_phone">Teléfono:</label>
-                  <input type="text" name="phone" value="{{user.phone}}" maxlength="15" class="form-control"
-                    id="id_phone">
-                </div>
-
-                <div class="col-md-6 col-sm-6">
-                  <label for="id_birth_date">Fecha de Nacimiento:</label>
-                                                <input type="text" name="birth_date" value="{{user.birth_date}}" class="form-control"
-                                                  id="inputBirthday">
-                </div>
-              </div>
-
-              <!--<div class="row">
-                <div class="col-md-6 col-sm-6">
-                  <label for="id_password1">Contraseña:</label>
-                  <input type="password" name="password1" class="form-control"  id="id_password1">
-                </div>
-                <div class="col-md-6 col-sm-6">
-                  <label for="id_password2">Confirmar contraseña:</label>
-                  <input type="password" name="password2" class="form-control"  id="id_password2">
-                </div>
-              </div>-->
-              <br>
-              <div class="row">
-                <div class="col-md-6 col-sm-6">
-                  <input type="checkbox" name="is_staff" class="" id="id_is_staff" checked="">
-                  <label for="id_is_staff">Es trabajador</label>
-                </div>
-
-                <div class="col-md-6 col-sm-6">
-                  <input type="checkbox" name="es_vendedor" class="" id="id_es_vendedor">
-                  <label for="id_es_vendedor">Es vendedor</label>
-                </div>
-              </div>
-              <br>
               <button type="submit" class="btn btn-primary col-md-12">Guardar cambios</button>
             </form>
           </div>

@@ -78,7 +78,6 @@ def dashboard_datos(request):
 def configperfil_view(request):
     if not request.user.is_authenticated:
         return redirect('error')
-        
     if request.method == 'POST':
         form = PerfilForm(request.POST, instance=request.user)
         print(request.POST)  
@@ -186,3 +185,8 @@ def eliminar_marca(request):
     if not request.user.is_authenticated:
         return redirect('error')
     return render(request, 'marcas/eliminar_marcas.html', {})
+
+def clientes_view(request):
+    if not request.user.is_authenticated:
+        return redirect('error')
+    return render(request, 'clientes/clientes.html', {})
