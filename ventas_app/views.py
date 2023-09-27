@@ -32,25 +32,21 @@ def logout_view(request):
 
 
 def registro_view(request):
+    image_form = None  # Define image_form fuera del bloque if/else
     if request.method == 'POST':
         form = PerfilForm(request.POST)
         if form.is_valid():
             password = form.cleaned_data['password']
-            password2 = form.cleaned_data['password2']
-            if password == password2:
-                hashed_password = make_password(password)
-                usuario = form.save(commit=False)
-                usuario.password = hashed_password
-                image_form = ProfileImageForm(request.POST, request.FILES)
-                if image_form.is_valid():
-                    usuario.image = image_form.cleaned_data['image']
-                usuario.save()
-                return redirect('login')
-            else:
-                form.add_error('password2', 'Las contraseñas no coinciden')
+            hashed_password = make_password(password)
+            usuario = form.save(commit=False)
+            usuario.password = hashed_password
+            image_form = ProfileImageForm(request.POST, request.FILES)
+            if image_form.is_valid():
+                usuario.image = image_form.cleaned_data['image']
+            usuario.save()
+            return redirect('login')
     else:
         form = PerfilForm()
-        image_form = ProfileImageForm()
     return render(request, 'auth-register-basic.html', {'form': form, 'image_form': image_form})
 
 

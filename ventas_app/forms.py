@@ -10,6 +10,8 @@ class RegistroForm(forms.ModelForm):
 
 class PerfilForm(forms.ModelForm):
     # profile_picture = forms.ImageField(label='Foto de perfil', required=False)
+    password = forms.CharField(widget=forms.PasswordInput)
+
 
     class Meta:
         model = Usuario

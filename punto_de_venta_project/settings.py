@@ -14,7 +14,7 @@ SECRET_KEY = 'django-insecure-8j$k0+x3+$89rhe&2#%)fx_p&$87@iuxkns_ly_0y=7k_x(07k
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 ROOT_URL = '/'
 LOGIN_REDIRECT_URL = '/dashboard/'
@@ -71,12 +71,13 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'punto_venta_django',
-        'USER': 'carlos',
-        'PASSWORD': 'c4rl05.11095',
-        'HOST': 'localhost',  # Puedes cambiar esto según la ubicación de tu servidor MySQL
-        'PORT': '3306',       # El puerto predeterminado de MySQL es 3306
+        'USER': 'punto_venta_django',
+        'PASSWORD': '260495',
+        'HOST': '0.0.0.0',  # Puedes cambiarlo si tu base de datos está en otro lugar
+        'PORT': '3306',       # Puerto por defecto de MariaDB
     }
 }
+
 
 
 
