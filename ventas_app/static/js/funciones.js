@@ -122,7 +122,7 @@ const listUsuarios = async () => {
                 <td class="centered">${usuario.phone}</td>
                 <td class="centered">${rolTexto}</td>
                 <td class="centered">${estadoTexto}</td>
-                <td class="centered"><a href="/configperfil/"><i class="fas fa-edit"></i> editar</a> | <a href="/seguridad/"><i class="fas fa-trash-alt"></i> eliminar</a></td>
+                <td class="centered"><a href="/configperfil/editar/2/"><i class="fas fa-edit"></i> editar</a> | <a href="/seguridad/"><i class="fas fa-trash-alt"></i> eliminar</a></td>
             </tr>
             `;
         });

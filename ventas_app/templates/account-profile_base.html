@@ -76,39 +76,34 @@
                   <div class="col-md-6">
                       <div class="form-group">
                           <label for="id_user_name">Usuario:</label>
-                          <input type="text" name="user_name" value="{{user.user_name}}" maxlength="50" class="form-control" required="" id="id_user_name">
+                          {{form.user_name}}
                       </div>
           
                       <div class="form-group">
                           <label for="id_nombre">Nombre:</label>
-                          <input type="text" name="nombre" value="{{user.nombre}}" maxlength="30" class="form-control" id="id_nombre">
+                          {{form.nombre}}
                       </div>
           
                       <div class="form-group">
                           <label for="id_apellido_paterno">Apellido paterno:</label>
-                          <input type="text" name="apellido_paterno" value="{{user.apellido_paterno}}" maxlength="30" class="form-control" id="id_apellido_paterno">
+                          {{form.apellido_paterno}}
                       </div>
           
                       <div class="form-group">
                           <label for="id_apellido_materno">Apellido materno:</label>
-                          <input type="text" name="apellido_materno" value="{{user.apellido_materno}}" maxlength="30" class="form-control" id="id_apellido_materno">
+                          {{form.apellido_materno}}
                       </div>
                   </div>
           
                   <div class="col-md-6">
                       <div class="form-group">
                           <label for="id_gender">Género:</label>
-                          <select name="gender" class="form-control" id="id_gender">
-                              <option value="" selected="">---------</option>
-                              <option value="masculino">Masculino</option>
-                              <option value="femenino">Femenino</option>
-                              <option value="otro">Otro</option>
-                          </select>
+                          {{form.gender}}
                       </div>
           
                       <div class="form-group">
                           <label for="id_phone">Teléfono:</label>
-                          <input type="text" name="phone" value="{{user.phone}}" maxlength="10" class="form-control" id="id_phone">
+                          {{form.phone}}
                       </div>
           
                       <div class="form-group">
@@ -118,7 +113,7 @@
           
                       <div class="form-group">
                           <label for="id_email">Correo:</label>
-                          <input type="email" name="email" value="{{user.email}}" maxlength="254" class="form-control" required="" id="id_email">
+                          {{form.email}}
                       </div>
                   </div>
               </div>
@@ -127,14 +122,14 @@
                   <div class="col-md-6">
                       <div class="form-group">
                           <label for="id_is_staff">Es trabajador:</label>
-                          <input type="checkbox" name="is_staff" id="id_is_staff" checked="">
+                          {{form.is_staff}}
                       </div>
                   </div>
           
                   <div class="col-md-6">
                       <div class="form-group">
                           <label for="id_es_vendedor">Es vendedor:</label>
-                          <input type="checkbox" name="es_vendedor" id="id_es_vendedor">
+                          {{form.es_vendedor}}
                       </div>
                   </div>
 

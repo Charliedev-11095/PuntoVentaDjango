@@ -71,18 +71,20 @@ def dashboard_datos(request):
     return JsonResponse(datos)
 
 
-def configperfil_view(request):
+def configperfil_view(request,usuario_id=None):
     if not request.user.is_authenticated:
+    
         return redirect('error')
+    usuario=Usuario.objects.get(id=usuario_id) if usuario_id else request.user
     if request.method == 'POST':
-        form = PerfilForm(request.POST, instance=request.user)
+        form = PerfilForm(request.POST, instance=usuario)
         print(request.POST)  
         if form.has_changed() and form.is_valid():  
             print(form.errors)
             form.save()
             return redirect('dashboard')
     else:
-        form = PerfilForm(instance=request.user)
+        form = PerfilForm(instance=usuario)
     error_messages = []
     if 'user_name' in form.errors:
         error_messages.append("Error: El campo 'Nombre de usuario' es obligatorio. Por favor, asegúrese de llenar este campo.")
