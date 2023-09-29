@@ -26,10 +26,11 @@ class PerfilForm(forms.ModelForm):
         self.fields['apellido_materno'].widget.attrs.update({'class': 'form-control'})
         self.fields['gender'].widget.attrs.update({'class': 'form-control'})
         self.fields['phone'].widget.attrs.update({'class': 'form-control'})
-        self.fields['birth_date'].widget.attrs.update({'class': 'form-control'})
+        self.fields['birth_date'].widget.attrs.update({'class': 'form-control','id':'inputBirthday'})
         self.fields['image'].widget.attrs.update({'class': 'form-control'})
         self.fields['is_staff'].widget.attrs.update()
         self.fields['es_vendedor'].widget.attrs.update()
+        self.fields['password'].widget.attrs.update({'class': 'form-control'})
 
 class ProfileImageForm(forms.ModelForm):
     class Meta:
