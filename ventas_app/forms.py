@@ -15,7 +15,7 @@ class PerfilForm(forms.ModelForm):
 
     class Meta:
         model = Usuario
-        fields = ['user_name','email','nombre', 'apellido_paterno', 'apellido_materno', 'gender', 'phone', 'birth_date','image','is_staff', 'es_vendedor']
+        fields = ['user_name','email','nombre', 'apellido_paterno', 'apellido_materno', 'gender', 'phone', 'birth_date','image','is_active','is_staff', 'es_vendedor']
       
     def __init__(self, *args, **kwargs):
         super(PerfilForm, self).__init__(*args, **kwargs)
@@ -28,6 +28,7 @@ class PerfilForm(forms.ModelForm):
         self.fields['phone'].widget.attrs.update({'class': 'form-control'})
         self.fields['birth_date'].widget.attrs.update({'class': 'form-control','id':'inputBirthday'})
         self.fields['image'].widget.attrs.update({'class': 'form-control'})
+        self.fields['is_active'].widget.attrs.update()
         self.fields['is_staff'].widget.attrs.update()
         self.fields['es_vendedor'].widget.attrs.update()
         self.fields['password'].widget.attrs.update({'class': 'form-control'})
