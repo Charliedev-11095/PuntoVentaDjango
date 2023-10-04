@@ -79,8 +79,9 @@
             <div class="card-header" id="EliminarCuenta">Eliminar Cuenta</div>
             <div class="card-body">
                 <p>La eliminación de su cuenta es una acción permanente y no se puede deshacer. Si está seguro de que desea eliminar su cuenta, seleccione el botón a continuación.</p>
-                <form action="{% url 'eliminar_usuario' usuario_id=user.id %}" method="post">
+                <form action="/seguridad/" method="post">
                     {% csrf_token %}
+                    <input type="text" name="usuario_id" value="{{user.id}}">
                     <button class="btn btn-danger-soft text-danger" type="submit">Entiendo los riesgos, borra mi Cuenta.</button>
                 </form>
             </div>

@@ -62,9 +62,9 @@ class CambioContraseñaForm(forms.Form):
 
 
 #Tabla Marcas
-class marca(models.Model):
+class Marca(models.Model):
     nombre_de_la_marca = models.CharField(max_length=50,null=False)
-    descripcion = models.CharField(max_length=50,null=False)
+    descripcion_marca = models.CharField(max_length=50,null=False)
     class Meta:
         verbose_name = 'Marca'
         verbose_name_plural = 'Marcas'
@@ -197,7 +197,7 @@ class UnidadesMedidaProducto(models.Model):
 class Productos(models.Model):
     nombre = models.CharField(max_length=50,null=False)
     descripcion = models.CharField(max_length=300,null=True)
-    marca = models.ForeignKey(marca,null=True,blank=False,on_delete=models.SET_NULL)
+    marca = models.ForeignKey(Marca,null=True,blank=False,on_delete=models.SET_NULL)
     existencia = models.DecimalField(max_digits=5,decimal_places=2,null=False,blank=False)
     deparamento_producto = models.ForeignKey(DepartamentoProducto,null=True,blank=False,on_delete=models.SET_NULL)
     precio_venta = models.DecimalField(max_digits=5,decimal_places=2,null=False)

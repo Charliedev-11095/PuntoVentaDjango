@@ -5,8 +5,9 @@ from django.contrib.auth import authenticate, login
 from django.urls import reverse
 from django.contrib.auth import logout
 from ventas_app.models import Usuario
-from ventas_app.models import marca
+from ventas_app.models import Marca
 from .forms import PerfilForm
+from .forms import MarcasForm
 from .forms import ProfileImageForm
 from django.contrib.auth.hashers import make_password
 from django.http import JsonResponse
@@ -113,12 +114,15 @@ def ImagenPerfil_view(request):
 def seguridad_view(request):
     if not request.user.is_authenticated:
         return redirect('error')
+    
     error_message = None
     success_message = None
+    
     if request.method == 'POST':
         current_password = request.POST.get('currentPassword')
         new_password = request.POST.get('newPassword')
         confirm_password = request.POST.get('confirmPassword')
+        
         if request.user.check_password(current_password):
             if new_password == confirm_password:
                 request.user.set_password(new_password)
@@ -128,9 +132,8 @@ def seguridad_view(request):
                 error_message = 'La nueva contraseña y la confirmación no coinciden.'
         else:
             error_message = 'La contraseña actual es incorrecta.'
+    
     return render(request, 'account-security.html', {'error_message': error_message, 'success_message': success_message})
-
-
 def pago_view(request):
     if not request.user.is_authenticated:
         return redirect('error')
@@ -157,7 +160,7 @@ def marcas_datos(request):
     if not request.user.is_authenticated:
         return redirect('error')
     print(request)
-    marcas = list(marca.objects.all().values())
+    marcas = list(Marca.objects.all().values())
     datos = {'marcas': marcas}
     return JsonResponse(datos)
 
@@ -167,13 +170,23 @@ def agregar_marca(request):
         return redirect('error')
     if request.method == 'POST':
         nombre_de_la_marca = request.POST.get('nombre_de_la_marca')
-        descripcion = request.POST.get('descripcion')
-        marca.objects.create(nombre_de_la_marca=nombre_de_la_marca, descripcion=descripcion)
+        descripcion_marca = request.POST.get('descripcion_marca')
+        Marca.objects.create(nombre_de_la_marca=nombre_de_la_marca, descripcion_marca=descripcion_marca)
         return redirect('marcas')
     return render(request, 'marcas/agregar_marca.html', {})
 
 
-def editar_marca(request):
+def editar_marca(request,marca_id=None):
+    marca=Marca.objects.get(id=marca_id) if marca_id else request.user
+    if request.method == 'POST':
+        form = MarcasForm(request.POST, instance=marca)
+        print(request.POST)  
+        if form.has_changed() and form.is_valid():  
+            print(form.errors)
+            form.save()
+            return redirect('marcas')
+    else:
+        form = MarcasForm(instance=marca)
     if not request.user.is_authenticated:
         return redirect('error')
     return render(request, 'marcas/editar_marcas.html', {})
@@ -188,3 +201,8 @@ def clientes_view(request):
     if not request.user.is_authenticated:
         return redirect('error')
     return render(request, 'clientes/clientes.html', {})
+
+def agregar_cliente(request):
+    if not request.user.is_authenticated:
+        return redirect('error')
+    return render(request, 'clientes/clientes_add.html', {})

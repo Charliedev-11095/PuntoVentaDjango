@@ -1,10 +1,10 @@
 from django.contrib import admin
-from .models import Usuario, marca, Domicilio, DatosContacto, DatosFiscales, DatosPersonales, \
+from .models import Usuario, Marca, Domicilio, DatosContacto, DatosFiscales, DatosPersonales, \
     UsuariosAcceso, Clientes, Negocio, DepartamentoProducto, UnidadesMedidaProducto, Productos, \
     Cajas, MovimientosCaja, Ventas, DetalleVentas
 
 admin.site.register(Usuario)
-admin.site.register(marca)
+admin.site.register(Marca)
 admin.site.register(Domicilio)
 admin.site.register(DatosContacto)
 admin.site.register(DatosFiscales)

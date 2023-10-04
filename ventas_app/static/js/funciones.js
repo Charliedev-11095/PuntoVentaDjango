@@ -122,7 +122,11 @@ const listUsuarios = async () => {
                 <td class="centered">${usuario.phone}</td>
                 <td class="centered">${rolTexto}</td>
                 <td class="centered">${estadoTexto}</td>
-                <td class="centered"><a href="/configperfil/editar/${usuario.id}/"><i class="fas fa-edit"></i> editar</a> | <a href="/eliminar_usuario/'+${usuario.id}+'"><i class=" fas fa-trash-alt"></i> eliminar</a></td>
+                <td class="centered">
+                <a href="/configperfil/editar/${usuario.id}/"><i class="fas fa-edit"></i> editar</a> 
+                | 
+                <a href="/seguridad/?id=${usuario.id}"><i class=" fas fa-trash-alt"></i> eliminar</a>
+                </td>
             </tr>
             `;
         });
@@ -142,8 +146,12 @@ const listMarcas = async () => {
             <tr>
                 <td class="centered">${index+1}</td>
                 <td class="centered">${marca.nombre_de_la_marca}</td>
-                <td class="centered">${marca.descripcion}</td>
-                <td class="centered"> <a href="/agregar_marca/"><i class="fas fa-plus"></i> agregar</a> | <a href="/editar_marca/"><i class="fas fa-edit"></i> editar</a>  |<a href="/eliminar_marca/"><i class=" fas fa-trash-alt"></i> eliminar</a></td>
+                <td class="centered">${marca.descripcion_marca}</td>
+                <td class="centered"> <a href="/agregar_marca/"><i class="fas fa-plus"></i> agregar</a>
+                 | 
+                 <a href="/editar_marca/${marca.id}/"><i class="fas fa-edit"></i> editar</a>  
+                 |
+                 <a href="/eliminar_marca/"><i class=" fas fa-trash-alt"></i> eliminar</a></td>
 
             </tr>
             `;

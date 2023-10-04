@@ -1,6 +1,7 @@
 # ventas/forms.py
 from django import forms
 from .models import Usuario
+from .models import Marca
 
 class RegistroForm(forms.ModelForm):
     email = forms.EmailField(label="Correo electrónico", widget=forms.EmailInput(attrs={'class': 'form-control'}))
@@ -44,4 +45,18 @@ def __init__(self, *args, **kwargs):
     self.fields['image'].widget.attrs.update({'class': 'form-control'})
 
 
+class MarcasForm(forms.ModelForm):
+    class Meta:
+        model = Marca
+        fields = ['nombre_de_la_marca', 'descripcion_marca',]
+
+
+        class meta:
+            model = Marca
+            fields = ['nombre_de_la_marca', 'descripcion_marca']
+
+    def __init__(self, *args, **kwargs):
+        super(MarcasForm, self).__init__(*args, **kwargs)
+        self.fields['nombre_de_la_marca'].widget.attrs.update({'class': 'form-control'})
+        self.fields['descripcion_marca'].widget.attrs.update({'class': 'form-control'})
 

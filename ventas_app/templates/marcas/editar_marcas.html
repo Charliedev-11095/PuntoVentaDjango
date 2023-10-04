@@ -50,8 +50,8 @@
         {%endblock%}
 
 
-        {% block tabla %}
 
+        {% block tabla %}
         <div class="card mb-4">
             <div class="card-header">Editar Marcas</div>
             <div class="card-body">
@@ -62,15 +62,42 @@
                             <div class="card">
 
                                 <div class="card-body">
-                                    <form method="POST" action="{% url 'agregar_marca' %}">
+                                    <form method="POST" action="/editar_marca/">
                                         {% csrf_token %}
+
+                                        {%block header%}
+<title>{% block title %}Marcas{% endblock %}</title>
+<header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
+    <div class="container-xl px-4">
+        <div class="page-header-content pt-4">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-auto mt-4">
+                    <h1 class="page-header-title">
+                        <div class="page-header-icon"><i data-feather="activity"></i></div>
+                        Panel de Control
+                    </h1>
+                    <div class="page-header-subtitle">Marcas</div>
+                </div>
+                <div class="col-12 col-xl-auto mt-4">
+                    <div class="input-group input-group-joined border-0" style="width: 16.5rem">
+                        <span class="input-group-text"><i class="text-primary" data-feather="calendar"></i></span>
+                        <input class="form-control ps-0 pointer" id="litepickerRangePlugin"
+                            placeholder="Seleccione Rango de Fecha..." />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+{% endblock %}
+
                                         <div class="mb-3 ">
                                             <label for="nombre_de_la_marca" class="form-label">Nombre de la Marca</label>
                                             <input type="text" class="form-control" id="id_nombre_de_la_marca" name="nombre_de_la_marca" required>
                                         </div>
                                         <div class="mb-3">
                                             <label for="descripcion" class="form-label">Descripción</label>
-                                            <textarea class="form-control" id="id_descripcion" name="descripcion"
+                                            <textarea class="form-control" id="id_descripcion_marca" name="descripcion"
                                                 rows="3"></textarea>
                                         </div>
                                         <br>

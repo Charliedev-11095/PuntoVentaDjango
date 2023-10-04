@@ -1,2 +1,97 @@
 {% extends 'dashboard_base.html' %}
+{% block title %}Clientes{% endblock %}
 {% load static %}
+
+{%block header%}
+
+<style>
+    table th {
+background-color:#787a7e;
+color: white;   
+}
+</style>
+
+<header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
+    <div class="container-xl px-4">
+        <div class="page-header-content pt-4">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-auto mt-4">
+                    <h1 class="page-header-title">
+                        <div class="page-header-icon"><i data-feather="activity"></i></div>
+                        Panel de Control
+                    </h1>
+                    <div class="page-header-subtitle">Panel de clientes</div>
+                </div>
+                <div class="col-12 col-xl-auto mt-4">
+                    <div class="input-group input-group-joined border-0" style="width: 16.5rem">
+                        <span class="input-group-text"><i class="text-primary" data-feather="calendar"></i></span>
+                        <input class="form-control ps-0 pointer" id="litepickerRangePlugin"
+                            placeholder="Seleccione Rango de Fecha..." />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+{% endblock %}
+
+
+{%block bienvenida%}
+<div class="container-xl px-4 mt-n10">
+    <div class="row">
+        <div class="col-xxl-4 col-xl-12 mb-4">
+            <div class="card h-100">
+                <div class="card-body h-100 p-5">
+                    <div class="row align-items-center">
+                        <div class="col-xl-8 col-xxl-12">
+                            <div class="text-center text-xl-start text-xxl-center mb-4 mb-xl-0 mb-xxl-4">
+                                <h1 class="text-primary">Control de clientes </h1>
+                                <p class="text-gray-700 mb-0">¡En este apartado podrás ver los datos relacionados con las clientes agregados</p>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-xxl-12 text-center"><img class="img-fluid"
+                                src="{% static 'assets/img/illustrations/at-work.svg' %}" style="max-width: 26rem" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {%endblock%}
+        {% block tabla %}
+
+<a href="{% url 'agregar_cliente' %}" class="btn btn-primary btn-icon-split mb-3">
+    <span class="icon text-white-50"><i class="fas fa-plus"></i></span>
+    <span class="text">Agregar Cliente</span>
+</a>
+
+
+        <div class="card mb-4">
+            <div class="card-header">Gestión de clientes</div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="tableUsuarios" class="display" style="font-size: smaller">
+                        <thead>
+                            <tr>
+                                <th class="centered">#</th>
+                                <th class="centered">Nickname</th>
+                                <th class="centered">Nombre(s)</th>
+                                <th class="centered">Apellido Paterno</th>
+                                <th class="centered">Apellido Materno</th>
+                                <th class="centered">Género</th>
+                                <th class="centered">Fecha de Nacimiento</th>
+                                <th class="centered">Correo</th>
+                                <th class="centered">Teléfono</th>
+                                <th class="centered">Rol</th>
+                                <th class="centered">Estado</th>
+                                <th class="centered">Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody_usuarios">
+                           
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        {% endblock %}
